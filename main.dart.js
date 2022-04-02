@@ -49476,14 +49476,14 @@ c6(a,b,c,d){return this.aq(a,b,c,d,0)}}
 A.DK.prototype={}
 A.BF.prototype={}
 A.yP.prototype={
-M(a,b){return new A.qd(B.A0,"Plan-At Client Demo",A.a4g(null,B.eH),!1,null)}}
+M(a,b){return new A.qd(B.A0,"Plan-At Client",A.a4g(null,B.eH),!1,null)}}
 A.qs.prototype={
 as(){return new A.uu(B.l)}}
 A.uu.prototype={
 LO(){this.aD(new A.X7(this))},
 M(a,b){var s,r,q,p,o=null
 this.a.toString
-s=A.a_u(A.a4d("Flutter Demo Home Page",o))
+s=A.a_u(A.a4d("Plan-At Client",o))
 r=t.F
 q=A.J_(A.a9a(A.b([B.FN,A.a4d(""+this.d,A.av(b).a1.e),A.a2B(B.vW,!1,this.gLN(),"Increment"),new A.xp(new A.Xb(b),o,o,o,o,B.x,o,!1,B.FM,o)],r),B.zq),o,o)
 r=A.b([B.vm,A.a2Z(new A.Xc(b),B.ru),A.a2Z(new A.Xd(b),B.rt)],r)
