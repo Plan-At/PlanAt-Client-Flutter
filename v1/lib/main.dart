@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import './util/MyDB.dart';
 
 import './route/ProfilePage.dart';
 import './route/SettingPage.dart';
+import './template/LoadingPage.dart';
 
-void main() {
+void main() async {
+  Hive.initFlutter();
   runApp(const MyApp());
 }
 
@@ -55,8 +58,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
   final MyDB _MyDB = MyDB();
+  int _counter = 0;
 
   void _incrementCounter() {
     setState(() {
@@ -67,6 +70,8 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
       _MyDB.incrementMyVariable();
+      _MyDB.testBox.put('counter', _counter);
+      print(_MyDB.testBox.get('counter'));
     });
   }
 
@@ -119,7 +124,6 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
               child: const Text('Open Profile Page'),
               onPressed: () {
-                // Navigate to another page when tapped.
                 Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const MyProfilePage())
@@ -128,7 +132,16 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '${_MyDB.myVariable}'
-            )
+            ),
+            ElevatedButton(
+              child: const Text('Open a loading screen'),
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyLoadingPage())
+                );
+              },
+            ),
           ],
         ),
       ),
