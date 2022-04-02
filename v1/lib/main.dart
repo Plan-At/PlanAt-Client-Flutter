@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import './route/ProfilePage.dart';
+import './route/SettingPage.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -111,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
               child: const Text('Open Profile Page'),
               onPressed: () {
-                // Navigate to second route when tapped.
+                // Navigate to another page when tapped.
                 Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => const MyProfilePage())
@@ -136,59 +139,25 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text('Drawer Header'),
             ),
             ListTile(
-              title: const Text('Item 1'),
+              title: const Text('Profile Page'),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MyProfilePage())
+                );
               },
             ),
             ListTile(
-              title: const Text('Item 2'),
+              title: const Text('Setting Page'),
               onTap: () {
-                // Update the state of the app
-                // ...
-                // Then close the drawer
-                Navigator.pop(context);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MySettingPage())
+                );
               },
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class MyProfilePage extends StatefulWidget {
-  const MyProfilePage({Key? key}) : super(key: key);
-
-  @override
-  State<MyProfilePage> createState() => _MyProfilePageState();
-}
-
-class _MyProfilePageState extends State<MyProfilePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Second Route '+_counter.toString()),
-      ),
-      body: const Center(
-        child: Text("Here should be the profile page")
       ),
     );
   }
