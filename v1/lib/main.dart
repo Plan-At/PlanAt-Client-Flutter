@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import './util/MyDB.dart';
+
 import './route/ProfilePage.dart';
 import './route/SettingPage.dart';
 
@@ -54,6 +56,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
+  final MyDB _MyDB = MyDB();
 
   void _incrementCounter() {
     setState(() {
@@ -63,6 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
+      _MyDB.incrementMyVariable();
     });
   }
 
@@ -122,6 +126,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
             ),
+            Text(
+              '${_MyDB.myVariable}'
+            )
           ],
         ),
       ),
