@@ -14,24 +14,25 @@ class _MyLoadingPageState extends State<MyLoadingPage> {
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: http.get(Uri.parse("https://api-0.752628.xyz/tool/delay?sleep_time=3")),
-        builder: (context, snapshot) {
-          String? message = "Here should be the loading screen for about 3 seconds";
-          if (snapshot.connectionState == ConnectionState.done) {
-            http.Response resp = snapshot.data as http.Response;
-            message = resp.body;
-          }
-          return Scaffold(
-            appBar: AppBar(
-              title: const Text('Loading Page'),
-            ),
-            body: Center(
-                child: Column(
-                  children: <Widget>[
-                    Text(message),
-                  ],
-                )
-            ),
-          );
-    });
+      builder: (context, snapshot) {
+        String? message = "Here should be the loading screen for about 3 seconds";
+        if (snapshot.connectionState == ConnectionState.done) {
+          http.Response resp = snapshot.data as http.Response;
+          message = resp.body;
+        }
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text('Loading Page'),
+          ),
+          body: Center(
+              child: Column(
+                children: <Widget>[
+                  Text(message),
+                ],
+              )
+          ),
+        );
+      }
+    );
   }
 }
