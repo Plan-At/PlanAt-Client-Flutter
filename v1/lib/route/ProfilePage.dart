@@ -22,6 +22,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                 const Text(
                     "Here should be the profile page"
                 ),
+                Image.network("https://cdn.jsdelivr.net/gh/Plan-At/static-image@main/2022/04/02/android-chrome-512x512.png") // SVG will not work here
               ],
             ),
           ),
