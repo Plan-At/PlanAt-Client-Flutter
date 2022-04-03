@@ -55223,7 +55223,7 @@ A.l5.prototype={
 ar(){return new A.H_(B.k)}}
 A.H_.prototype={
 N(a,b){var s=null,r=t.E
-return A.Uc(A.Ld(B.rT),A.a9K(A.b([A.a58(A.z1(A.b([B.jD,new A.n8(A.aif(s,s,new A.nz("https://cdn.statically.io/avatar/s=64/HW",1)),s)],r),B.cj),3),A.a58(A.z1(A.b([B.jD],r),B.cj),3),A.a58(A.z1(A.b([B.jD],r),B.cj),3)],r),B.eg,B.f_),s)}}
+return A.Uc(A.Ld(B.rT),A.a9K(A.b([A.a58(A.z1(A.b([B.jD,new A.n8(A.aif(s,s,new A.nz("https://cdn.jsdelivr.net/gh/Plan-At/static-image@main/2022/04/02/android-chrome-512x512.png",1)),s)],r),B.cj),3),A.a58(A.z1(A.b([B.jD],r),B.cj),3),A.a58(A.z1(A.b([B.jD],r),B.cj),3)],r),B.eg,B.f_),s)}}
 A.l6.prototype={
 ar(){return new A.H0(B.k)}}
 A.H0.prototype={
