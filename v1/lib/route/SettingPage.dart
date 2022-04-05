@@ -11,6 +11,9 @@ class MySettingPage extends StatefulWidget {
 class _MySettingPageState extends State<MySettingPage> {
   final MySharedVariable _MyVar = MySharedVariable();
 
+  final myTextFieldController = TextEditingController();
+  String inputtedText = "Placeholder";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,12 +36,18 @@ class _MySettingPageState extends State<MySettingPage> {
               Text(
                   'Shared number: ${_MyVar.myVariable}'
               ),
-              TextFormField(
-                decoration: const InputDecoration(
-                  border: UnderlineInputBorder(),
-                  labelText: 'Enter something here',
-                ),
-              )
+              TextField(
+                controller: myTextFieldController,
+              ),
+              ElevatedButton(
+                child: const Text('Submit'),
+                onPressed: () {
+                  setState(() {
+                    inputtedText = myTextFieldController.text;
+                  });
+                },
+              ),
+              Text(inputtedText)
             ],
           )
       ),
