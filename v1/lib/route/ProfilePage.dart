@@ -21,7 +21,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
               children: <Widget>[
                 Card(
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30)
+                    borderRadius: BorderRadius.circular(20)
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(10),
@@ -38,30 +38,47 @@ class _MyProfilePageState extends State<MyProfilePage> {
                       ],
                     ),
                   ),
-                )
+                ),
+                Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20)
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(10),
+                    child: Column(
+                      children: const <Widget>[
+                        Text(
+                          "Website"
+                        ),
+                        Divider(
+                          height: 10,
+                        ),
+                        Text(
+                            "Github"
+                        ),
+                        Divider(
+                          height: 10,
+                        ),
+                        Text(
+                            "Twitter"
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
           Expanded(
-              flex: 3,
+              flex: 7,
               child: Column(
-                children: <Widget>[
-                  const Text(
-                      "Here should be the profile page"
+                children: const <Widget>[
+                  Text(
+                      "Here should be a card"
                   ),
                 ],
               ),
           ),
-          Expanded(
-            flex: 3,
-            child: Column(
-              children: <Widget>[
-                const Text(
-                    "Here should be the profile page"
-                ),
-              ],
-            ),
-          )
         ],
       )
     );
