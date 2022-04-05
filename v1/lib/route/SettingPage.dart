@@ -38,6 +38,9 @@ class _MySettingPageState extends State<MySettingPage> {
               ),
               TextField(
                 controller: myTextFieldController,
+                decoration: const InputDecoration.collapsed(
+                  hintText: 'Type something here and will show below',
+                ),
               ),
               ElevatedButton(
                 child: const Text('Submit'),
