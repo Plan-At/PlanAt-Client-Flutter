@@ -33,6 +33,12 @@ class _MySettingPageState extends State<MySettingPage> {
               Text(
                   'Shared number: ${_MyVar.myVariable}'
               ),
+              TextFormField(
+                decoration: const InputDecoration(
+                  border: UnderlineInputBorder(),
+                  labelText: 'Enter something here',
+                ),
+              )
             ],
           )
       ),
