@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 
-import './util/MyDB.dart';
+import './util/MySharedVariable.dart';
 
 import './route/ProfilePage.dart';
 import './route/SettingPage.dart';
 import './template/LoadingPage.dart';
 
-void main() async {
-  Hive.initFlutter();
+void main() {
   runApp(const MyApp());
 }
 
@@ -58,7 +56,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final MyDB _MyDB = MyDB();
+  final MySharedVariable _MyVar = MySharedVariable();
   int _counter = 0;
 
   void _incrementCounter() {
@@ -69,9 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // _counter without calling setState(), then the build method would not be
       // called again, and so nothing would appear to happen.
       _counter++;
-      _MyDB.incrementMyVariable();
-      _MyDB.testBox.put('counter', _counter);
-      print(_MyDB.testBox.get('counter'));
+      _MyVar.incrementMyVariable();
     });
   }
 
@@ -121,6 +117,9 @@ class _MyHomePageState extends State<MyHomePage> {
               tooltip: 'Increment',
               child: const Icon(Icons.add),
             ),
+            Text(
+                'Shared number: ${_MyVar.myVariable}'
+            ),
             ElevatedButton(
               child: const Text('Open Profile Page'),
               onPressed: () {
@@ -129,9 +128,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     MaterialPageRoute(builder: (context) => const MyProfilePage())
                 );
               },
-            ),
-            Text(
-              '${_MyDB.myVariable}'
             ),
             ElevatedButton(
               child: const Text('Open a loading screen'),
