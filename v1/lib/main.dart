@@ -84,7 +84,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   // will shows on top of all items, it can be a logo or a Title text
                   title: Image.asset('assets/image/Icon-192.png'),
                   // will show on bottom of SideMenu when displayMode was SideMenuDisplayMode.open
-                  footer: const Text('demo'),
+                  footer: const Text('Version: Dev'),
                   // List of SideMenuItem to show them on SideMenu
                   items: <SideMenuItem>[
                     SideMenuItem(
@@ -100,12 +100,18 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     SideMenuItem(
                       priority: 1,
-                      title: 'Settings',
+                      title: 'Profile',
                       onTap: () => page.jumpToPage(1),
-                      icon: const Icon(Icons.settings),
+                      icon: const Icon(Icons.account_circle_rounded),
                     ),
                     SideMenuItem(
                       priority: 2,
+                      title: 'Setting',
+                      onTap: () => page.jumpToPage(2),
+                      icon: const Icon(Icons.settings),
+                    ),
+                    SideMenuItem(
+                      priority: 3,
                       title: 'Exit',
                       onTap: () {},
                       icon: const Icon(Icons.exit_to_app),
@@ -117,6 +123,9 @@ class _MyHomePageState extends State<MyHomePage> {
                     controller: page,
                     children: const [
                       MyDashboardPage(
+
+                      ),
+                      MyProfilePage(
 
                       ),
                       MySettingPage(
