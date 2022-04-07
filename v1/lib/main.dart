@@ -154,7 +154,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text('Drawer Header'),
             ),
             ListTile(
-              title: const Text('Profile Page'),
+              title: const Text('DONT CLICK ME'),
               onTap: () {
                 Navigator.push(
                     context,
@@ -163,7 +163,7 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
             ListTile(
-              title: const Text('Setting Page'),
+              title: const Text('DONT CLICK ME'),
               onTap: () {
                 Navigator.push(
                     context,
