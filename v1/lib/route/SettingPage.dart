@@ -16,11 +16,10 @@ class _MySettingPageState extends State<MySettingPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Setting Page'),
-      ),
-      body: Center(
+    return Row(
+      children: [
+        Expanded(
+          flex: 1,
           child: Column(
             children: <Widget>[
               const Text(
@@ -50,7 +49,8 @@ class _MySettingPageState extends State<MySettingPage> {
               Text(inputtedText)
             ],
           )
-      ),
+        ),
+      ],
     );
   }
 }
