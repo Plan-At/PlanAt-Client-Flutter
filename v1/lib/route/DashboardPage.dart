@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../util/MySharedVariable.dart';
 
-import 'ProfilePage.dart';
 import '../template/LoadingPage.dart';
 
 class MyDashboardPage extends StatefulWidget {
@@ -85,14 +84,6 @@ class _MyMyDashboardPageState extends State<MyDashboardPage> {
                 ),
                 Text(
                     'Shared number: ${_MyVar.myVariable}'
-                ),
-                ElevatedButton(
-                  child: const Text('Open Profile Page'),
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const MyProfilePage())
-                    );},
                 ),
                 ElevatedButton(
                   child: const Text('Open a loading screen'),

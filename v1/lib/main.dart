@@ -4,6 +4,10 @@ import 'package:easy_sidemenu/easy_sidemenu.dart';
 import './route/DashboardPage.dart';
 import './route/ProfilePage.dart';
 import './route/SettingPage.dart';
+import './route/CalendarPage.dart';
+import './route/NotificationPage.dart';
+import './route/OrganizationPage.dart';
+import './route/ContactPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -82,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   // page controller to manage a PageView
                   controller: page,
                   // will shows on top of all items, it can be a logo or a Title text
-                  title: Image.asset('assets/image/Icon-192.png'),
+                  // title: Image.asset('assets/image/Icon-192.png'),
                   // will show on bottom of SideMenu when displayMode was SideMenuDisplayMode.open
                   footer: const Text('Version: Dev'),
                   // List of SideMenuItem to show them on SideMenu
@@ -92,26 +96,50 @@ class _MyHomePageState extends State<MyHomePage> {
                       priority: 0,
                       title: 'Dashboard',
                       onTap: () => page.jumpToPage(0),
-                      icon: const Icon(Icons.home),
+                      icon: const Icon(Icons.home_rounded),
+                    ),
+                    SideMenuItem(
+                      priority: 1,
+                      title: 'Notification',
+                      onTap: () => page.jumpToPage(1),
+                      icon: const Icon(Icons.circle_notifications_rounded),
                       badgeContent: const Text(
                         '3',
                         style: TextStyle(color: Colors.white),
                       ),
                     ),
                     SideMenuItem(
-                      priority: 1,
-                      title: 'Profile',
-                      onTap: () => page.jumpToPage(1),
-                      icon: const Icon(Icons.account_circle_rounded),
-                    ),
-                    SideMenuItem(
                       priority: 2,
-                      title: 'Setting',
+                      title: 'Calendar',
                       onTap: () => page.jumpToPage(2),
-                      icon: const Icon(Icons.settings),
+                      icon: const Icon(Icons.calendar_month_rounded),
                     ),
                     SideMenuItem(
                       priority: 3,
+                      title: 'Contact',
+                      onTap: () => page.jumpToPage(3),
+                      icon: const Icon(Icons.contact_page_rounded),
+                    ),
+                    SideMenuItem(
+                      priority: 4,
+                      title: 'Organization',
+                      onTap: () => page.jumpToPage(4),
+                      icon: const Icon(Icons.groups_rounded),
+                    ),
+                    SideMenuItem(
+                      priority: 5,
+                      title: 'Profile',
+                      onTap: () => page.jumpToPage(5),
+                      icon: const Icon(Icons.account_circle_rounded),
+                    ),
+                    SideMenuItem(
+                      priority: 6,
+                      title: 'Setting',
+                      onTap: () => page.jumpToPage(6),
+                      icon: const Icon(Icons.settings_rounded),
+                    ),
+                    SideMenuItem(
+                      priority: 7,
                       title: 'Exit',
                       onTap: () {},
                       icon: const Icon(Icons.exit_to_app),
@@ -123,6 +151,18 @@ class _MyHomePageState extends State<MyHomePage> {
                     controller: page,
                     children: const [
                       MyDashboardPage(
+
+                      ),
+                      MyNotificationPage(
+
+                      ),
+                      MyCalendarPage(
+
+                      ),
+                      MyContactPage(
+
+                      ),
+                      MyOrganizationPage(
 
                       ),
                       MyProfilePage(
