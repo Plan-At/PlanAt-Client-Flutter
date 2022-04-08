@@ -8,6 +8,7 @@ import './route/CalendarPage.dart';
 import './route/NotificationPage.dart';
 import './route/OrganizationPage.dart';
 import './route/ContactPage.dart';
+import './route/SubAppPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -74,6 +75,8 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+        // Since everything is a widget so the title can even be an image
+        // title: Image.asset('assets/image/Icon-192.png'),
       ),
       body: Row (
         children: [
@@ -134,12 +137,18 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     SideMenuItem(
                       priority: 6,
-                      title: 'Setting',
+                      title: 'SubApp',
                       onTap: () => page.jumpToPage(6),
-                      icon: const Icon(Icons.settings_rounded),
+                      icon: const Icon(Icons.apps_rounded),
                     ),
                     SideMenuItem(
                       priority: 7,
+                      title: 'Setting',
+                      onTap: () => page.jumpToPage(7),
+                      icon: const Icon(Icons.settings_rounded),
+                    ),
+                    SideMenuItem(
+                      priority: 8,
                       title: 'Exit',
                       onTap: () {},
                       icon: const Icon(Icons.exit_to_app),
@@ -166,6 +175,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
                       ),
                       MyProfilePage(
+
+                      ),
+                      MySubAppPage(
 
                       ),
                       MySettingPage(
