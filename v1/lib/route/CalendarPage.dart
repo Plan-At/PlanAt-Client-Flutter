@@ -29,16 +29,26 @@ class _MyCalendarPageState extends State<MyCalendarPage> {
     return Column(
       children: [
         Row(
-          children: const [
-            Text("Weekly"),
-            Spacer(
-              flex: 9,
+          children: [
+            const Text("Weekly"),
+            const Spacer(
+              flex: 49,
             ),
-            Text("Previous Week"),
-            Spacer(
+            IconButton(
+              icon: const Icon(Icons.navigate_before_rounded),
+              onPressed: () {
+                print("preesed to previous week");
+              },
+            ),
+            const Spacer(
               flex: 1,
             ),
-            Text("Next Week"),
+            IconButton(
+              icon: const Icon(Icons.navigate_next_rounded),
+              onPressed: () {
+                print("preesed to next week");
+              },
+            ),
           ],
         ),
         const Divider(
