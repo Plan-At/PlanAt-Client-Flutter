@@ -16,44 +16,70 @@ class _MySettingPageState extends State<MySettingPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Setting Page'),
-      ),
-      body: Center(
-          child: Column(
-            children: <Widget>[
-              const Text(
-                  "Here should be the setting page"
-              ),
-              FloatingActionButton(
-                onPressed: () {setState(() {
-                  _MyVar.incrementMyVariable();
-                });},
-                tooltip: 'Increment',
-                child: const Icon(Icons.add),
-              ),
-              Text(
-                  'Shared number: ${_MyVar.myVariable}'
-              ),
-              TextField(
-                controller: myTextFieldController,
-                decoration: const InputDecoration.collapsed(
-                  hintText: 'Type something here and will show below',
+    return Row(
+      children: [
+        Expanded(
+          flex: 1,
+          child: SingleChildScrollView(
+            controller: ScrollController(),
+            child: Column(
+              children: <Widget>[
+                const Text(
+                    "Here should be the setting page"
                 ),
-              ),
-              ElevatedButton(
-                child: const Text('Submit'),
-                onPressed: () {
-                  setState(() {
-                    inputtedText = myTextFieldController.text;
-                  });
-                },
-              ),
-              Text(inputtedText)
-            ],
-          )
-      ),
+                FloatingActionButton(
+                  onPressed: () {setState(() {
+                    _MyVar.incrementMyVariable();
+                  });},
+                  tooltip: 'Increment',
+                  child: const Icon(Icons.add),
+                ),
+                Text(
+                    'Shared number: ${_MyVar.myVariable}'
+                ),
+                TextField(
+                  controller: myTextFieldController,
+                ),
+                ElevatedButton(
+                  child: const Text('Submit'),
+                  onPressed: () {
+                    setState(() {
+                      inputtedText = myTextFieldController.text;
+                    });
+                  },
+                ),
+                Text(
+                    inputtedText
+                ),
+                const Text(
+                    '1\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'
+                ),
+                const Text(
+                    '2\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'
+                ),
+                const Text(
+                    '3\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'
+                ),
+                const Text(
+                    '4\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'
+                ),
+                const Text(
+                    '5\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'
+                ),
+                const Text(
+                    '6\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'
+                ),
+                const Text(
+                    '7\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'
+                ),
+                const Text(
+                    '8\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

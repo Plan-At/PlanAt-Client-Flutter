@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:easy_sidemenu/easy_sidemenu.dart';
 
-import './util/MySharedVariable.dart';
-
+import './route/DashboardPage.dart';
 import './route/ProfilePage.dart';
 import './route/SettingPage.dart';
-import './template/LoadingPage.dart';
+import './route/CalendarPage.dart';
+import './route/NotificationPage.dart';
+import './route/OrganizationPage.dart';
+import './route/ContactPage.dart';
+import './route/SubAppPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -56,20 +60,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final MySharedVariable _MyVar = MySharedVariable();
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-      _MyVar.incrementMyVariable();
-    });
-  }
+  PageController page = PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -84,62 +75,121 @@ class _MyHomePageState extends State<MyHomePage> {
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
+        // Since everything is a widget so the title can even be an image
+        // title: Image.asset('assets/image/Icon-192.png'),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+      body: Row (
+        children: [
+          Expanded(
+            flex: 1,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                SideMenu(
+                  // page controller to manage a PageView
+                  controller: page,
+                  // will shows on top of all items, it can be a logo or a Title text
+                  // title: Image.asset('assets/image/Icon-192.png'),
+                  // will show on bottom of SideMenu when displayMode was SideMenuDisplayMode.open
+                  footer: const Text('Version: Dev'),
+                  // List of SideMenuItem to show them on SideMenu
+                  items: <SideMenuItem>[
+                    SideMenuItem(
+                      // Priority of item to show on SideMenu, lower value is displayed at the top
+                      priority: 0,
+                      title: 'Dashboard',
+                      onTap: () => page.jumpToPage(0),
+                      icon: const Icon(Icons.home_rounded),
+                    ),
+                    SideMenuItem(
+                      priority: 1,
+                      title: 'Notification',
+                      onTap: () => page.jumpToPage(1),
+                      icon: const Icon(Icons.circle_notifications_rounded),
+                      badgeContent: const Text(
+                        '3',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                    SideMenuItem(
+                      priority: 2,
+                      title: 'Calendar',
+                      onTap: () => page.jumpToPage(2),
+                      icon: const Icon(Icons.calendar_month_rounded),
+                    ),
+                    SideMenuItem(
+                      priority: 3,
+                      title: 'Contact',
+                      onTap: () => page.jumpToPage(3),
+                      icon: const Icon(Icons.contact_page_rounded),
+                    ),
+                    SideMenuItem(
+                      priority: 4,
+                      title: 'Organization',
+                      onTap: () => page.jumpToPage(4),
+                      icon: const Icon(Icons.groups_rounded),
+                    ),
+                    SideMenuItem(
+                      priority: 5,
+                      title: 'Profile',
+                      onTap: () => page.jumpToPage(5),
+                      icon: const Icon(Icons.account_circle_rounded),
+                    ),
+                    SideMenuItem(
+                      priority: 6,
+                      title: 'SubApp',
+                      onTap: () => page.jumpToPage(6),
+                      icon: const Icon(Icons.apps_rounded),
+                    ),
+                    SideMenuItem(
+                      priority: 7,
+                      title: 'Setting',
+                      onTap: () => page.jumpToPage(7),
+                      icon: const Icon(Icons.settings_rounded),
+                    ),
+                    SideMenuItem(
+                      priority: 8,
+                      title: 'Exit',
+                      onTap: () {},
+                      icon: const Icon(Icons.exit_to_app),
+                    ),
+                  ],
+                ),
+                Expanded(
+                  child: PageView(
+                    controller: page,
+                    children: const [
+                      MyDashboardPage(
+
+                      ),
+                      MyNotificationPage(
+
+                      ),
+                      MyCalendarPage(
+
+                      ),
+                      MyContactPage(
+
+                      ),
+                      MyOrganizationPage(
+
+                      ),
+                      MyProfilePage(
+
+                      ),
+                      MySubAppPage(
+
+                      ),
+                      MySettingPage(
+
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-            FloatingActionButton(
-              onPressed: _incrementCounter,
-              tooltip: 'Increment',
-              child: const Icon(Icons.add),
-            ),
-            Text(
-                'Shared number: ${_MyVar.myVariable}'
-            ),
-            ElevatedButton(
-              child: const Text('Open Profile Page'),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MyProfilePage())
-                );
-              },
-            ),
-            ElevatedButton(
-              child: const Text('Open a loading screen'),
-              onPressed: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const MyLoadingPage())
-                );
-              },
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
       endDrawer: Drawer(
         // Add a ListView to the drawer. This ensures the user can scroll
@@ -156,7 +206,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text('Drawer Header'),
             ),
             ListTile(
-              title: const Text('Profile Page'),
+              title: const Text('DONT CLICK ME'),
               onTap: () {
                 Navigator.push(
                     context,
@@ -165,7 +215,7 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
             ListTile(
-              title: const Text('Setting Page'),
+              title: const Text('DONT CLICK ME'),
               onTap: () {
                 Navigator.push(
                     context,
