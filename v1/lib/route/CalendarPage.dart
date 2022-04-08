@@ -10,6 +10,20 @@ class MyCalendarPage extends StatefulWidget {
 }
 
 class _MyCalendarPageState extends State<MyCalendarPage> {
+  static Card example_card = Card(
+    child: InkWell(
+      splashColor: Colors.blue.withAlpha(30),
+      onTap: () {
+        debugPrint('Card tapped.');
+      },
+      child: const SizedBox(
+        // width: 300,
+        // height: 100,
+        child: Text('A card that can be tapped'),
+      ),
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -39,8 +53,59 @@ class _MyCalendarPageState extends State<MyCalendarPage> {
             Expanded(
               flex: 1,
               child: Column(
+                children: const [
+                  Text("Day 1")
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Column(
+                children: const [
+                  Text("Day 2")
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Column(
+                children: const [
+                  Text("Day 3")
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Column(
+                children: const [
+                  Text("Day 4")
+                ],
+              ),
+            ),
+            Expanded(
+              flex: 1,
+              child: Column(
+                children: const [
+                  Text("Day 5"),
+                ],
+              ),
+            ),
+          ],
+        ),
+        const Divider(
+          height: 1,
+          thickness: 1,
+          indent: 0,
+          endIndent: 0,
+          color: Colors.black,
+        ),
+        Row(
+          children: [
+            Expanded(
+              flex: 1,
+              child: Column(
                 children: [
-                  Text("here should be the calendar page")
+                  example_card,
                 ],
               ),
             ),
@@ -48,7 +113,7 @@ class _MyCalendarPageState extends State<MyCalendarPage> {
               flex: 1,
               child: Column(
                 children: [
-                  Text("here should be the calendar page")
+                  example_card,
                 ],
               ),
             ),
@@ -56,7 +121,7 @@ class _MyCalendarPageState extends State<MyCalendarPage> {
               flex: 1,
               child: Column(
                 children: [
-                  Text("here should be the calendar page")
+                  example_card,
                 ],
               ),
             ),
@@ -64,7 +129,7 @@ class _MyCalendarPageState extends State<MyCalendarPage> {
               flex: 1,
               child: Column(
                 children: [
-                  Text("here should be the calendar page")
+                  example_card,
                 ],
               ),
             ),
@@ -72,20 +137,7 @@ class _MyCalendarPageState extends State<MyCalendarPage> {
               flex: 1,
               child: Column(
                 children: [
-                  Text("here should be the calendar page"),
-                  Card(
-                    child: InkWell(
-                      splashColor: Colors.blue.withAlpha(30),
-                      onTap: () {
-                        debugPrint('Card tapped.');
-                      },
-                      child: const SizedBox(
-                        // width: 300,
-                        // height: 100,
-                        child: Text('A card that can be tapped'),
-                      ),
-                    ),
-                  ),
+                  example_card,
                 ],
               ),
             ),
