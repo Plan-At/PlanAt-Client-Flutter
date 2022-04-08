@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 
 class MyCalendarPage extends StatefulWidget {
@@ -30,7 +28,7 @@ class _MyCalendarPageState extends State<MyCalendarPage> {
       children: [
         Row(
           children: [
-            const Text("Weekly"),
+            const Text("Weekly View"),
             const Spacer(
               flex: 49,
             ),
