@@ -48,6 +48,7 @@
       var scriptTag = document.createElement('script');
       scriptTag.src = '/main.dart.js';
       scriptTag.type = 'application/javascript';
+      scriptTag.src = document.URL + scriptTag.src;
       document.body.append(scriptTag);
     }
 
