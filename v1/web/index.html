@@ -33,6 +33,7 @@
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
+  <img src="https://cdn.jsdelivr.net/gh/Plan-At/static-image/2022/04/08/loading_786-500.png" alt="splash screen" style="position:absolute;top:50%;left:50%;margin: 0 -50% 0 0;transform:translate(-50%,-50%)"/>
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
@@ -45,7 +46,7 @@
       }
       scriptLoaded = true;
       var scriptTag = document.createElement('script');
-      scriptTag.src = 'main.dart.js';
+      scriptTag.src = '/main.dart.js';
       scriptTag.type = 'application/javascript';
       document.body.append(scriptTag);
     }
