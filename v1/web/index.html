@@ -27,7 +27,7 @@
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.ico"/>
+  <link rel="icon" type="image/png" href="https://cdn.jsdelivr.net/gh/Plan-At/static-image/2022/02/17/favicon.ico"/>
 
   <title>v1</title>
   <link rel="manifest" href="manifest.json">
@@ -45,10 +45,9 @@
         return;
       }
       scriptLoaded = true;
-      var scriptTag = document.createElement('script');
-      scriptTag.src = '/main.dart.js';
+      const scriptTag = document.createElement('script');
       scriptTag.type = 'application/javascript';
-      scriptTag.src = document.URL + scriptTag.src;
+      scriptTag.src = "main.dart.js";
       document.body.append(scriptTag);
     }
 
