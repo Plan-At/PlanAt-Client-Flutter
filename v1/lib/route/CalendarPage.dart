@@ -15,8 +15,8 @@ class _MyCalendarPageState extends State<MyCalendarPage> {
         debugPrint('Card tapped.');
       },
       child: const SizedBox(
-        // width: 300,
-        // height: 100,
+        width: 300,
+        height: 100,
         child: Text('A card that can be tapped'),
       ),
     ),
@@ -107,49 +107,62 @@ class _MyCalendarPageState extends State<MyCalendarPage> {
           endIndent: 0,
           color: Colors.black,
         ),
-        Row(
-          children: [
-            Expanded(
-              flex: 1,
-              child: Column(
-                children: [
-                  example_card,
-                ],
+        SizedBox(
+          height: 630,
+          child: Row(
+            children: [
+              Expanded(
+                flex: 1,
+                child: Column(
+                  children: [
+                    example_card,
+                    example_card,
+                    example_card,
+                    example_card,
+                  ],
+                ),
               ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Column(
-                children: [
-                  example_card,
-                ],
+              Expanded(
+                flex: 1,
+                child: Column(
+                  children: [
+                    example_card,
+                    const Spacer(flex: 1),
+                    example_card,
+                  ],
+                ),
               ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Column(
-                children: [
-                  example_card,
-                ],
+              Expanded(
+                flex: 1,
+                child: Column(
+                  children: [
+                    example_card,
+                    example_card,
+                    const Spacer(flex: 1),
+                    example_card,
+                  ],
+                ),
               ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Column(
-                children: [
-                  example_card,
-                ],
+              Expanded(
+                flex: 1,
+                child: Column(
+                  children: [
+                    example_card,
+                    const SizedBox(height: 150),
+                    example_card,
+                  ],
+                ),
               ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Column(
-                children: [
-                  example_card,
-                ],
+              Expanded(
+                flex: 1,
+                child: Column(
+                  children: [
+                    example_card,
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ],
     );
