@@ -1,18 +1,34 @@
 import 'package:flutter/material.dart';
 
+import '../util/MyWidget.dart';
 import '../component/CalendarEventCard.dart';
 
 class MyCalendarPage extends StatefulWidget {
-  const MyCalendarPage({Key? key}) : super(key: key);
+  const MyCalendarPage({Key? key, this.daysToShow=5}) : super(key: key);
+
+  final int daysToShow;
 
   @override
   State<MyCalendarPage> createState() => _MyCalendarPageState();
 }
 
 class _MyCalendarPageState extends State<MyCalendarPage> {
-
   @override
   Widget build(BuildContext context) {
+    List<Widget> dayList = [];
+    for (var currentDay = 1; currentDay <= widget.daysToShow; currentDay++) {
+      dayList.add(
+        Expanded(
+          flex: 1,
+          child: Column(
+            children: [
+              Text("Day "+currentDay.toString()),
+            ],
+          ),
+        )
+      );
+    }
+
     return Column(
       children: [
         Row(
@@ -38,64 +54,11 @@ class _MyCalendarPageState extends State<MyCalendarPage> {
             ),
           ],
         ),
-        const Divider(
-          height: 1,
-          thickness: 1,
-          indent: 0,
-          endIndent: 0,
-          color: Colors.black,
-        ),
+        MyStyle.blackDivider,
         Row(
-          children: [
-            Expanded(
-              flex: 1,
-              child: Column(
-                children: const [
-                  Text("Day 1")
-                ],
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Column(
-                children: const [
-                  Text("Day 2")
-                ],
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Column(
-                children: const [
-                  Text("Day 3")
-                ],
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Column(
-                children: const [
-                  Text("Day 4")
-                ],
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: Column(
-                children: const [
-                  Text("Day 5"),
-                ],
-              ),
-            ),
-          ],
+          children: dayList,
         ),
-        const Divider(
-          height: 1,
-          thickness: 1,
-          indent: 0,
-          endIndent: 0,
-          color: Colors.black,
-        ),
+        MyStyle.blackDivider,
         SizedBox(
           height: 630,
           child: Row(
