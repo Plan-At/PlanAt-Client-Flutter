@@ -15,14 +15,33 @@ class MyCalendarPage extends StatefulWidget {
 class _MyCalendarPageState extends State<MyCalendarPage> {
   @override
   Widget build(BuildContext context) {
-    List<Widget> dayList = [];
+    List<Widget> dayNameList = [];
     for (var currentDay = 1; currentDay <= widget.daysToShow; currentDay++) {
-      dayList.add(
+      dayNameList.add(
         Expanded(
           flex: 1,
           child: Column(
             children: [
               Text("Day "+currentDay.toString()),
+            ],
+          ),
+        )
+      );
+    }
+
+    List<Widget> dayContentList = [];
+    for (var currentDay = 1; currentDay <= widget.daysToShow; currentDay++) {
+      dayContentList.add(
+        Expanded(
+          flex: 1,
+          child: Column(
+            children: const [
+              CalendarEventCard(
+                title: "a",
+              ),
+              CalendarEventCard(),
+              CalendarEventCard(),
+              CalendarEventCard(),
             ],
           ),
         )
@@ -56,66 +75,13 @@ class _MyCalendarPageState extends State<MyCalendarPage> {
         ),
         MyStyle.blackDivider,
         Row(
-          children: dayList,
+          children: dayNameList,
         ),
         MyStyle.blackDivider,
         SizedBox(
           height: 630,
           child: Row(
-            children: [
-              Expanded(
-                flex: 1,
-                child: Column(
-                  children: const [
-                    CalendarEventCard(
-                      title: "a",
-                    ),
-                    CalendarEventCard(),
-                    CalendarEventCard(),
-                    CalendarEventCard(),
-                  ],
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Column(
-                  children: const [
-                    CalendarEventCard(),
-                    Spacer(flex: 1),
-                    CalendarEventCard(),
-                  ],
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Column(
-                  children: const [
-                    CalendarEventCard(),
-                    CalendarEventCard(),
-                    Spacer(flex: 1),
-                    CalendarEventCard(),
-                  ],
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Column(
-                  children: const [
-                    CalendarEventCard(),
-                    SizedBox(height: 150),
-                    CalendarEventCard(),
-                  ],
-                ),
-              ),
-              Expanded(
-                flex: 1,
-                child: Column(
-                  children: const [
-                    CalendarEventCard(),
-                  ],
-                ),
-              ),
-            ],
+            children: dayContentList,
           ),
         ),
       ],
