@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../component/CalendarEventCard.dart';
+
 class MyCalendarPage extends StatefulWidget {
   const MyCalendarPage({Key? key}) : super(key: key);
 
@@ -8,19 +10,6 @@ class MyCalendarPage extends StatefulWidget {
 }
 
 class _MyCalendarPageState extends State<MyCalendarPage> {
-  static Card example_card = Card(
-    child: InkWell(
-      splashColor: Colors.blue.withAlpha(30),
-      onTap: () {
-        debugPrint('Card tapped.');
-      },
-      child: const SizedBox(
-        width: 300,
-        height: 100,
-        child: Text('A card that can be tapped'),
-      ),
-    ),
-  );
 
   @override
   Widget build(BuildContext context) {
@@ -115,10 +104,10 @@ class _MyCalendarPageState extends State<MyCalendarPage> {
                 flex: 1,
                 child: Column(
                   children: [
-                    example_card,
-                    example_card,
-                    example_card,
-                    example_card,
+                    const CalendarEventCard(),
+                    const CalendarEventCard(),
+                    const CalendarEventCard(),
+                    const CalendarEventCard(),
                   ],
                 ),
               ),
@@ -126,9 +115,9 @@ class _MyCalendarPageState extends State<MyCalendarPage> {
                 flex: 1,
                 child: Column(
                   children: [
-                    example_card,
+                    const CalendarEventCard(),
                     const Spacer(flex: 1),
-                    example_card,
+                    const CalendarEventCard(),
                   ],
                 ),
               ),
@@ -136,10 +125,10 @@ class _MyCalendarPageState extends State<MyCalendarPage> {
                 flex: 1,
                 child: Column(
                   children: [
-                    example_card,
-                    example_card,
+                    const CalendarEventCard(),
+                    const CalendarEventCard(),
                     const Spacer(flex: 1),
-                    example_card,
+                    const CalendarEventCard(),
                   ],
                 ),
               ),
@@ -147,9 +136,9 @@ class _MyCalendarPageState extends State<MyCalendarPage> {
                 flex: 1,
                 child: Column(
                   children: [
-                    example_card,
+                    const CalendarEventCard(),
                     const SizedBox(height: 150),
-                    example_card,
+                    const CalendarEventCard(),
                   ],
                 ),
               ),
@@ -157,7 +146,7 @@ class _MyCalendarPageState extends State<MyCalendarPage> {
                 flex: 1,
                 child: Column(
                   children: [
-                    example_card,
+                    const CalendarEventCard(),
                   ],
                 ),
               ),
