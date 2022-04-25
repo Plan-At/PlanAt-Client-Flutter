@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CalendarEventCard extends StatefulWidget {
-  const CalendarEventCard({Key? key}) : super(key: key);
+  const CalendarEventCard({Key? key, this.title=""}) : super(key: key);
+
+  final String title;
 
   @override
   State<CalendarEventCard> createState() => _CalendarEventCardState();
@@ -15,6 +17,7 @@ class _CalendarEventCardState extends State<CalendarEventCard>{
         splashColor: Colors.blue.withAlpha(30),
         onTap: () {
           debugPrint('Card tapped.');
+          debugPrint(widget.title);
         },
         child: const SizedBox(
           width: 300,

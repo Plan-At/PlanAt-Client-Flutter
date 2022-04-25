@@ -103,50 +103,52 @@ class _MyCalendarPageState extends State<MyCalendarPage> {
               Expanded(
                 flex: 1,
                 child: Column(
-                  children: [
-                    const CalendarEventCard(),
-                    const CalendarEventCard(),
-                    const CalendarEventCard(),
-                    const CalendarEventCard(),
+                  children: const [
+                    CalendarEventCard(
+                      title: "a",
+                    ),
+                    CalendarEventCard(),
+                    CalendarEventCard(),
+                    CalendarEventCard(),
                   ],
                 ),
               ),
               Expanded(
                 flex: 1,
                 child: Column(
-                  children: [
-                    const CalendarEventCard(),
-                    const Spacer(flex: 1),
-                    const CalendarEventCard(),
+                  children: const [
+                    CalendarEventCard(),
+                    Spacer(flex: 1),
+                    CalendarEventCard(),
                   ],
                 ),
               ),
               Expanded(
                 flex: 1,
                 child: Column(
-                  children: [
-                    const CalendarEventCard(),
-                    const CalendarEventCard(),
-                    const Spacer(flex: 1),
-                    const CalendarEventCard(),
+                  children: const [
+                    CalendarEventCard(),
+                    CalendarEventCard(),
+                    Spacer(flex: 1),
+                    CalendarEventCard(),
                   ],
                 ),
               ),
               Expanded(
                 flex: 1,
                 child: Column(
-                  children: [
-                    const CalendarEventCard(),
-                    const SizedBox(height: 150),
-                    const CalendarEventCard(),
+                  children: const [
+                    CalendarEventCard(),
+                    SizedBox(height: 150),
+                    CalendarEventCard(),
                   ],
                 ),
               ),
               Expanded(
                 flex: 1,
                 child: Column(
-                  children: [
-                    const CalendarEventCard(),
+                  children: const [
+                    CalendarEventCard(),
                   ],
                 ),
               ),
