@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../util/MyWidget.dart';
-import '../component/CalendarEventCard.dart';
+import '../util/CalendarEvent.dart';
 
 class MyCalendarPage extends StatefulWidget {
   const MyCalendarPage({Key? key, this.daysToShow=5}) : super(key: key);
@@ -15,34 +15,31 @@ class MyCalendarPage extends StatefulWidget {
 class _MyCalendarPageState extends State<MyCalendarPage> {
   @override
   Widget build(BuildContext context) {
-    List<Widget> dayNameList = [];
-    for (var currentDay = 1; currentDay <= widget.daysToShow; currentDay++) {
-      dayNameList.add(
-        Expanded(
-          flex: 1,
-          child: Column(
-            children: [
-              Text("Day "+currentDay.toString()),
-            ],
-          ),
-        )
-      );
-    }
+    var ed = CalendarEventData("Untitled", "some description");
 
-    List<Widget> dayContentList = [];
+    List<Widget> dayNameList = [];
+
+    List<Widget> dayMainList = [];
     for (var currentDay = 1; currentDay <= widget.daysToShow; currentDay++) {
-      dayContentList.add(
+      List<Widget> dayContentList = [
+        CalendarEventCard(d: ed,),
+      ];
+
+      dayNameList.add(
+          Expanded(
+            flex: 1,
+            child: Column(
+              children: [
+                Text("Day "+currentDay.toString()),
+              ],
+            ),
+          )
+      );
+      dayMainList.add(
         Expanded(
           flex: 1,
           child: Column(
-            children: const [
-              CalendarEventCard(
-                title: "a",
-              ),
-              CalendarEventCard(),
-              CalendarEventCard(),
-              CalendarEventCard(),
-            ],
+            children: dayContentList,
           ),
         )
       );
@@ -57,14 +54,19 @@ class _MyCalendarPageState extends State<MyCalendarPage> {
               flex: 49,
             ),
             IconButton(
+              icon: const Icon(Icons.post_add_rounded),
+              onPressed: () {setState(() {
+                debugPrint("trying to add new event");
+              });},
+            ),
+            const Spacer(flex: 1),
+            IconButton(
               icon: const Icon(Icons.navigate_before_rounded),
               onPressed: () {
                 print("preesed to previous week");
               },
             ),
-            const Spacer(
-              flex: 1,
-            ),
+            const Spacer(flex: 1),
             IconButton(
               icon: const Icon(Icons.navigate_next_rounded),
               onPressed: () {
@@ -81,7 +83,7 @@ class _MyCalendarPageState extends State<MyCalendarPage> {
         SizedBox(
           height: 630,
           child: Row(
-            children: dayContentList,
+            children: dayMainList,
           ),
         ),
       ],
