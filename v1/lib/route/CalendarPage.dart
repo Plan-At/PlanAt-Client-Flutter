@@ -15,14 +15,35 @@ class MyCalendarPage extends StatefulWidget {
 class _MyCalendarPageState extends State<MyCalendarPage> {
   @override
   Widget build(BuildContext context) {
-    var ed = CalendarEventData("Untitled", "some description");
-
     List<Widget> dayNameList = [];
 
     List<Widget> dayMainList = [];
+
+    // CalendarEventData ee;
+    // CalendarEventDataGenerator.singleEvent().then((value) {
+    //   ee = value;
+    // });
+
     for (var currentDay = 1; currentDay <= widget.daysToShow; currentDay++) {
       List<Widget> dayContentList = [
-        CalendarEventCard(d: ed,),
+        CalendarEventCard(
+          d: CalendarEventData(
+            "title or name",
+            "decs",
+            TimeObject(
+              "",
+              3600,
+              "",
+              0,
+            ),
+            TimeObject(
+              "",
+              3600,
+              "",
+              0,
+            ),
+          ),
+        ),
       ];
 
       dayNameList.add(
