@@ -32,13 +32,13 @@ class _MyCalendarPageState extends State<MyCalendarPage> {
             "decs",
             TimeObject(
               "",
-              3600,
+              0,
               "",
               0,
             ),
             TimeObject(
               "",
-              3600,
+              7200,
               "",
               0,
             ),

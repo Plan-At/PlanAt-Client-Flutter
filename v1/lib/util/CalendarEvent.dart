@@ -17,7 +17,7 @@ class CalendarEventCard extends StatefulWidget {
 class _CalendarEventCardState extends State<CalendarEventCard>{
   @override
   Widget build(BuildContext context) {
-    int duration = widget.d.start_time.timestamp - widget.d.end_time.timestamp;
+    int duration = widget.d.end_time.timestamp - widget.d.start_time.timestamp;
 
 
     return Card(
