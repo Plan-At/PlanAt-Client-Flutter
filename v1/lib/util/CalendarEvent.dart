@@ -48,8 +48,10 @@ class _CalendarEventCardState extends State<CalendarEventCard>{
 class CalendarEventData {
   String display_name;
   String description;
+  TimeObject start_time;
+  TimeObject end_time;
 
-  CalendarEventData(this.display_name, this.description);
+  CalendarEventData(this.display_name, this.description, this.start_time, this.end_time);
 }
 
 class CalendarEventDataGenerator {
@@ -61,12 +63,47 @@ class CalendarEventDataGenerator {
         headers: {"person_id": "123456890", "token": "aaaaaaaa"},
       );
       var decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
-      var uri = Uri.parse(decodedResponse['uri'] as String);
-      print(await client.get(uri));
+      return CalendarEventData(
+        decodedResponse["display_name"],
+        decodedResponse["description"],
+        TimeObject(
+          decodedResponse["start_time"]["text"],
+          decodedResponse["start_time"]["timestamp"],
+          decodedResponse["start_time"]["timezone_name"],
+          decodedResponse["start_time"]["timezone_difference"],
+        ),
+        TimeObject(
+          decodedResponse["end_time"]["text"],
+          decodedResponse["end_time"]["timestamp"],
+          decodedResponse["end_time"]["timezone_name"],
+          decodedResponse["end_time"]["timezone_difference"],
+        ),
+      );
     } finally {
-    client.close();
+      client.close();
     }
-
-    return CalendarEventData("", "");
   }
+}
+
+class TimeObject {
+  String text;
+  int timestamp;
+  String timezone_name;
+  int timezone_difference;
+
+  TimeObject(this.text, this.timestamp, this.timezone_name, this.timezone_difference);
+}
+
+class TagObject {
+  String tag_id;
+  String name;
+
+  TagObject(this.tag_id, this.name);
+}
+
+class TypeObject {
+  String type_id;
+  String name;
+
+  TypeObject(this.type_id, this.name);
 }
