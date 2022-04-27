@@ -17,6 +17,9 @@ class CalendarEventCard extends StatefulWidget {
 class _CalendarEventCardState extends State<CalendarEventCard>{
   @override
   Widget build(BuildContext context) {
+    int duration = widget.d.start_time.timestamp - widget.d.end_time.timestamp;
+
+
     return Card(
       child: InkWell(
         splashColor: Colors.blue.withAlpha(30),
@@ -26,7 +29,7 @@ class _CalendarEventCardState extends State<CalendarEventCard>{
         },
         child: SizedBox(
           width: 300,
-          height: 100,
+          height: (duration/86400)*630,
           child: Column(
             children: [
               Text(
