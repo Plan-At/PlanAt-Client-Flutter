@@ -24,8 +24,28 @@ class _CalendarEventCardState extends State<CalendarEventCard>{
       child: InkWell(
         splashColor: Colors.blue.withAlpha(30),
         onTap: () {
-          debugPrint('Card tapped.');
-          debugPrint(widget.d.display_name);
+          debugPrint('Card tapped');
+          showDialog(
+            context: context,
+            builder: (_) {
+              return AlertDialog(
+                title: const Text("Event Detail"),
+                content: Column(
+                  children: [
+                    Text(
+                      widget.d.display_name,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(widget.d.start_time.text+'~'+widget.d.end_time.text),
+                    Text(widget.d.description),
+                  ],
+                ),
+              );
+            }
+          );
         },
         child: SizedBox(
           width: 300,
@@ -35,10 +55,11 @@ class _CalendarEventCardState extends State<CalendarEventCard>{
               Text(
                 widget.d.display_name,
                 style: const TextStyle(
-                  fontSize: 24,
+                  fontSize: 16,
                   fontWeight: FontWeight.bold,
                 ),
               ),
+              Text(widget.d.start_time.text+'~'+widget.d.end_time.text),
               Text(widget.d.description),
             ],
           ),

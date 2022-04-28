@@ -29,15 +29,15 @@ class _MyCalendarPageState extends State<MyCalendarPage> {
         CalendarEventCard(
           d: CalendarEventData(
             "title or name",
-            "decs",
+            "description this event here",
             TimeObject(
-              "",
+              "0AM",
               0,
               "",
               0,
             ),
             TimeObject(
-              "",
+              "13PM",
               7200,
               "",
               0,
