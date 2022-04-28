@@ -79,14 +79,39 @@ class CalendarEventData {
 }
 
 class CalendarEventDataGenerator {
+  static CalendarEventData placeholder() {
+    return CalendarEventData(
+      "null",
+      "",
+      TimeObject(
+        "",
+        0,
+        "",
+        0,
+      ),
+      TimeObject(
+        "",
+        0,
+        "",
+        0,
+      ),
+    );
+  }
+
   static Future<CalendarEventData> singleEvent() async {
     var client = http.Client();
     try {
       var response = await client.get(
-        Uri.https(MyURL.mainAPIEndpoint, 'v1/universal/user/calendar/event?event_id=1651091827454060'),
-        headers: {"person_id": "123456890", "token": "aaaaaaaa"},
+        Uri.https(MyURL.mainAPIEndpoint, 'v1/universal/user/calendar/event', {"event_id": "1651185655952402"}),
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "token": "aaaaaaaa",
+        },
       );
       var decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
+      print(utf8.decode(response.bodyBytes));
+      print(decodedResponse);
       return CalendarEventData(
         decodedResponse["display_name"],
         decodedResponse["description"],

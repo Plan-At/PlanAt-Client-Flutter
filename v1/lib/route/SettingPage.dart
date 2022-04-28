@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:v1/util/CalendarEvent.dart';
 
 import '../util/MySharedVariable.dart';
 
@@ -9,7 +10,7 @@ class MySettingPage extends StatefulWidget {
 }
 
 class _MySettingPageState extends State<MySettingPage> {
-  final MySharedVariable _MyVar = MySharedVariable();
+  final MySharedVariable globalVar = MySharedVariable();
 
   final myTextFieldController = TextEditingController();
   String inputtedText = "Placeholder";
@@ -27,15 +28,24 @@ class _MySettingPageState extends State<MySettingPage> {
                 const Text(
                     "Here should be the setting page"
                 ),
+                ElevatedButton(
+                  child: const Text("Fetch CalendarEventData"),
+                  onPressed: () {
+                    CalendarEventDataGenerator.singleEvent().then((value) {
+                      globalVar.exampleCED = value;
+                      print(globalVar.exampleCED.display_name);
+                    });
+                  },
+                ),
                 FloatingActionButton(
                   onPressed: () {setState(() {
-                    _MyVar.incrementMyVariable();
+                    globalVar.incrementMyVariable();
                   });},
                   tooltip: 'Increment',
                   child: const Icon(Icons.add),
                 ),
                 Text(
-                    'Shared number: ${_MyVar.myVariable}'
+                    'Shared number: ${globalVar.myVariable}'
                 ),
                 TextField(
                   controller: myTextFieldController,
