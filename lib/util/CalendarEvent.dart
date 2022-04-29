@@ -117,15 +117,15 @@ class CalendarEventDataGenerator {
         decodedResponse["description"],
         TimeObject(
           decodedResponse["start_time"]["text"],
-          decodedResponse["start_time"]["timestamp"],
+          decodedResponse["start_time"]["timestamp_int"],
           decodedResponse["start_time"]["timezone_name"],
-          decodedResponse["start_time"]["timezone_difference"],
+          decodedResponse["start_time"]["timezone_offset"],
         ),
         TimeObject(
           decodedResponse["end_time"]["text"],
-          decodedResponse["end_time"]["timestamp"],
+          decodedResponse["end_time"]["timestamp_int"],
           decodedResponse["end_time"]["timezone_name"],
-          decodedResponse["end_time"]["timezone_difference"],
+          decodedResponse["end_time"]["timezone_offset"],
         ),
       );
     } finally {

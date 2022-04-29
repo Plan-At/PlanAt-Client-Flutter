@@ -26,17 +26,20 @@ class _MySettingPageState extends State<MySettingPage> {
             child: Column(
               children: <Widget>[
                 const Text(
-                    "Here should be the setting page"
+                    "Setting Page"
                 ),
                 ElevatedButton(
                   child: const Text("Fetch CalendarEventData"),
                   onPressed: () {
                     CalendarEventDataGenerator.singleEvent().then((value) {
-                      globalVar.exampleCED = value;
-                      print(globalVar.exampleCED.display_name);
+                      setState(() {
+                        globalVar.exampleCED = value;
+                        print(globalVar.exampleCED.display_name);
+                      });
                     });
                   },
                 ),
+                Text(globalVar.exampleCED.display_name),
                 FloatingActionButton(
                   onPressed: () {setState(() {
                     globalVar.incrementMyVariable();
