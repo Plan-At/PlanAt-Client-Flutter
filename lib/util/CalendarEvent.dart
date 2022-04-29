@@ -36,9 +36,7 @@ class _CalendarEventCardState extends State<CalendarEventCard> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      Text(widget.d.start_time.text +
-                          '~' +
-                          widget.d.end_time.text),
+                      Text(widget.d.start_time.text +'~' +widget.d.end_time.text),
                       Text(widget.d.description),
                     ],
                   ),

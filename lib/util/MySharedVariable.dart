@@ -10,7 +10,7 @@ class MySharedVariable {
     calendarEventIndex = [0];
   }
 
-  int myVariable = 0;
+  late int myVariable;
   late CalendarEventData exampleCED;
   late List<int> calendarEventIndex;
 
