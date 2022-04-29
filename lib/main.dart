@@ -9,6 +9,7 @@ import './route/NotificationPage.dart';
 import './route/OrganizationPage.dart';
 import './route/ContactPage.dart';
 import './route/SubAppPage.dart';
+import './route/EventListPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -113,38 +114,44 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                     SideMenuItem(
                       priority: 2,
-                      title: 'Calendar',
+                      title: 'Event List',
                       onTap: () => page.jumpToPage(2),
-                      icon: const Icon(Icons.calendar_month_rounded),
+                      icon: const Icon(Icons.format_list_bulleted_rounded),
                     ),
                     SideMenuItem(
                       priority: 3,
-                      title: 'Contact',
+                      title: 'Calendar',
                       onTap: () => page.jumpToPage(3),
-                      icon: const Icon(Icons.contact_page_rounded),
+                      icon: const Icon(Icons.calendar_month_rounded),
                     ),
                     SideMenuItem(
                       priority: 4,
-                      title: 'Organization',
+                      title: 'Contact',
                       onTap: () => page.jumpToPage(4),
-                      icon: const Icon(Icons.groups_rounded),
+                      icon: const Icon(Icons.contact_page_rounded),
                     ),
                     SideMenuItem(
                       priority: 5,
-                      title: 'Profile',
+                      title: 'Organization',
                       onTap: () => page.jumpToPage(5),
-                      icon: const Icon(Icons.account_circle_rounded),
+                      icon: const Icon(Icons.groups_rounded),
                     ),
                     SideMenuItem(
                       priority: 6,
-                      title: 'SubApp',
+                      title: 'Profile',
                       onTap: () => page.jumpToPage(6),
-                      icon: const Icon(Icons.apps_rounded),
+                      icon: const Icon(Icons.account_circle_rounded),
                     ),
                     SideMenuItem(
                       priority: 7,
-                      title: 'Setting',
+                      title: 'SubApp',
                       onTap: () => page.jumpToPage(7),
+                      icon: const Icon(Icons.apps_rounded),
+                    ),
+                    SideMenuItem(
+                      priority: 8,
+                      title: 'Setting',
+                      onTap: () => page.jumpToPage(8),
                       icon: const Icon(Icons.settings_rounded),
                     ),
                     SideMenuItem(
@@ -159,30 +166,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: PageView(
                     controller: page,
                     children: const [
-                      MyDashboardPage(
-
-                      ),
-                      MyNotificationPage(
-
-                      ),
-                      MyCalendarPage(
-
-                      ),
-                      MyContactPage(
-
-                      ),
-                      MyOrganizationPage(
-
-                      ),
-                      MyProfilePage(
-
-                      ),
-                      MySubAppPage(
-
-                      ),
-                      MySettingPage(
-
-                      ),
+                      MyDashboardPage(),
+                      MyNotificationPage(),
+                      MyEventListPage(),
+                      MyCalendarPage(),
+                      MyContactPage(),
+                      MyOrganizationPage(),
+                      MyProfilePage(),
+                      MySubAppPage(),
+                      MySettingPage(),
                     ],
                   ),
                 ),
