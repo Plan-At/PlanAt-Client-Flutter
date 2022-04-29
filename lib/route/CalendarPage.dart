@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../util/MySharedVariable.dart';
 import '../util/MyWidget.dart';
 import '../util/CalendarEvent.dart';
 
@@ -13,39 +14,21 @@ class MyCalendarPage extends StatefulWidget {
 }
 
 class _MyCalendarPageState extends State<MyCalendarPage> {
+  final MySharedVariable globalVar = MySharedVariable();
+
   @override
   Widget build(BuildContext context) {
     List<Widget> dayNameList = [];
 
     List<Widget> dayMainList = [];
 
-    // CalendarEventData ee;
-    // CalendarEventDataGenerator.singleEvent().then((value) {
-    //   ee = value;
-    // });
+    List<Widget> dayContentList = [
+      CalendarEventCard(
+        d: globalVar.exampleCED,
+      ),
+    ];
 
     for (var currentDay = 1; currentDay <= widget.daysToShow; currentDay++) {
-      List<Widget> dayContentList = [
-        CalendarEventCard(
-          d: CalendarEventData(
-            "title or name",
-            "description this event here",
-            TimeObject(
-              "0AM",
-              0,
-              "",
-              0,
-            ),
-            TimeObject(
-              "13PM",
-              7200,
-              "",
-              0,
-            ),
-          ),
-        ),
-      ];
-
       dayNameList.add(
           Expanded(
             flex: 1,
@@ -84,14 +67,14 @@ class _MyCalendarPageState extends State<MyCalendarPage> {
             IconButton(
               icon: const Icon(Icons.navigate_before_rounded),
               onPressed: () {
-                print("preesed to previous week");
+                debugPrint("pressed to previous week");
               },
             ),
             const Spacer(flex: 1),
             IconButton(
               icon: const Icon(Icons.navigate_next_rounded),
               onPressed: () {
-                print("preesed to next week");
+                debugPrint("pressed to next week");
               },
             ),
           ],

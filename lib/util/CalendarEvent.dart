@@ -81,17 +81,17 @@ class CalendarEventData {
 class CalendarEventDataGenerator {
   static CalendarEventData placeholder() {
     return CalendarEventData(
-      "null",
-      "",
+      "placeholder event",
+      "describe the event here",
       TimeObject(
-        "",
+        "start",
         0,
         "",
         0,
       ),
       TimeObject(
-        "",
-        0,
+        "end",
+        7200,
         "",
         0,
       ),
@@ -102,16 +102,18 @@ class CalendarEventDataGenerator {
     var client = http.Client();
     try {
       var response = await client.get(
-        Uri.https(MyURL.mainAPIEndpoint, 'v1/universal/user/calendar/event', {"event_id": "1651185655952402"}),
+        Uri.https(MyURL.mainAPIEndpoint, 'v1/universal/user/calendar/event', {"event_id": "1651195106622531"}),
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json",
           "token": "aaaaaaaa",
         },
       );
+      if (response.statusCode != 200) {
+        debugPrint("status code: "+response.statusCode.toString());
+      }
       var decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
-      print(utf8.decode(response.bodyBytes));
-      print(decodedResponse);
+      debugPrint(utf8.decode(response.bodyBytes));
       return CalendarEventData(
         decodedResponse["display_name"],
         decodedResponse["description"],

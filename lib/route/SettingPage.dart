@@ -25,16 +25,13 @@ class _MySettingPageState extends State<MySettingPage> {
             controller: ScrollController(),
             child: Column(
               children: <Widget>[
-                const Text(
-                    "Setting Page"
-                ),
                 ElevatedButton(
                   child: const Text("Fetch CalendarEventData"),
                   onPressed: () {
                     CalendarEventDataGenerator.singleEvent().then((value) {
                       setState(() {
                         globalVar.exampleCED = value;
-                        print(globalVar.exampleCED.display_name);
+                        debugPrint(globalVar.exampleCED.display_name);
                       });
                     });
                   },
