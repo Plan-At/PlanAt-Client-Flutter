@@ -79,7 +79,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // Since everything is a widget so the title can even be an image
         // title: Image.asset('assets/image/Icon-192.png'),
       ),
-      body: Row (
+      body: Row(
         children: [
           Expanded(
             flex: 1,
@@ -155,7 +155,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       icon: const Icon(Icons.settings_rounded),
                     ),
                     SideMenuItem(
-                      priority: 8,
+                      priority: 9,
                       title: 'Exit',
                       onTap: () {},
                       icon: const Icon(Icons.exit_to_app),
@@ -202,8 +202,8 @@ class _MyHomePageState extends State<MyHomePage> {
               onTap: () {
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const MyProfilePage())
-                );
+                    MaterialPageRoute(
+                        builder: (context) => const MyProfilePage()));
               },
             ),
             ListTile(
@@ -211,8 +211,8 @@ class _MyHomePageState extends State<MyHomePage> {
               onTap: () {
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const MySettingPage())
-                );
+                    MaterialPageRoute(
+                        builder: (context) => const MySettingPage()));
               },
             ),
           ],

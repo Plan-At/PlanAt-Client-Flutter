@@ -14,7 +14,7 @@ class CalendarEventCard extends StatefulWidget {
   State<CalendarEventCard> createState() => _CalendarEventCardState();
 }
 
-class _CalendarEventCardState extends State<CalendarEventCard>{
+class _CalendarEventCardState extends State<CalendarEventCard> {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -23,30 +23,31 @@ class _CalendarEventCardState extends State<CalendarEventCard>{
         onTap: () {
           debugPrint('Card tapped');
           showDialog(
-            context: context,
-            builder: (_) {
-              return AlertDialog(
-                title: const Text("Event Detail"),
-                content: Column(
-                  children: [
-                    Text(
-                      widget.d.display_name,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
+              context: context,
+              builder: (_) {
+                return AlertDialog(
+                  title: const Text("Event Detail"),
+                  content: Column(
+                    children: [
+                      Text(
+                        widget.d.display_name,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    Text(widget.d.start_time.text+'~'+widget.d.end_time.text),
-                    Text(widget.d.description),
-                  ],
-                ),
-              );
-            }
-          );
+                      Text(widget.d.start_time.text +
+                          '~' +
+                          widget.d.end_time.text),
+                      Text(widget.d.description),
+                    ],
+                  ),
+                );
+              });
         },
         child: SizedBox(
           width: 300,
-          height: (widget.d.duration/86400)*630,
+          height: (widget.d.duration / 86400) * 630,
           child: Column(
             children: [
               Text(
@@ -56,7 +57,7 @@ class _CalendarEventCardState extends State<CalendarEventCard>{
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text(widget.d.start_time.text+'~'+widget.d.end_time.text),
+              Text(widget.d.start_time.text + '~' + widget.d.end_time.text),
               Text(widget.d.description),
             ],
           ),
@@ -73,7 +74,8 @@ class CalendarEventData {
   TimeObject end_time;
   late int duration;
 
-  CalendarEventData(this.display_name, this.description, this.start_time, this.end_time){
+  CalendarEventData(
+      this.display_name, this.description, this.start_time, this.end_time) {
     duration = end_time.timestamp - start_time.timestamp;
   }
 }
@@ -102,7 +104,8 @@ class CalendarEventDataGenerator {
     var client = http.Client();
     try {
       var response = await client.get(
-        Uri.https(MyURL.mainAPIEndpoint, 'v1/universal/user/calendar/event', {"event_id": "1649358548151936"}),
+        Uri.https(MyURL.mainAPIEndpoint, 'v1/universal/user/calendar/event',
+            {"event_id": "1649358548151936"}),
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json",
@@ -110,7 +113,7 @@ class CalendarEventDataGenerator {
         },
       );
       if (response.statusCode != 200) {
-        debugPrint("status code: "+response.statusCode.toString());
+        debugPrint("status code: " + response.statusCode.toString());
       }
       var decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
       debugPrint(utf8.decode(response.bodyBytes));
@@ -142,7 +145,8 @@ class TimeObject {
   String timezone_name;
   int timezone_difference;
 
-  TimeObject(this.text, this.timestamp, this.timezone_name, this.timezone_difference);
+  TimeObject(
+      this.text, this.timestamp, this.timezone_name, this.timezone_difference);
 }
 
 class TagObject {
@@ -158,3 +162,5 @@ class TypeObject {
 
   TypeObject(this.type_id, this.name);
 }
+
+class CalendarEventList {}
