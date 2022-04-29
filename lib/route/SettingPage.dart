@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:v1/util/CalendarEvent.dart';
 
+import '../util/CalendarEvent.dart';
 import '../util/MySharedVariable.dart';
 
 class MySettingPage extends StatefulWidget {
@@ -37,6 +37,15 @@ class _MySettingPageState extends State<MySettingPage> {
                   },
                 ),
                 Text(globalVar.exampleCED.display_name),
+                ElevatedButton(
+                  child: const Text("Fetch CalendarEventIndex"),
+                  onPressed: () {
+                    CalendarEventList.privateIndex().then(((value) {
+                      globalVar.calendarEventIndex = value;
+                      debugPrint(globalVar.calendarEventIndex.toString());
+                    }));
+                  },
+                ),
                 FloatingActionButton(
                   onPressed: () {setState(() {
                     globalVar.incrementMyVariable();

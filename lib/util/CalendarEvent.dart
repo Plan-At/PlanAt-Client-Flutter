@@ -104,8 +104,11 @@ class CalendarEventDataGenerator {
     var client = http.Client();
     try {
       var response = await client.get(
-        Uri.https(MyURL.mainAPIEndpoint, 'v1/universal/user/calendar/event',
-            {"event_id": "1649358548151936"}),
+        Uri.https(
+          MyURL.mainAPIEndpoint, 
+          'v1/universal/user/calendar/event',
+          {"event_id": "1649358548151936"},
+        ),
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json",
@@ -163,4 +166,30 @@ class TypeObject {
   TypeObject(this.type_id, this.name);
 }
 
-class CalendarEventList {}
+class CalendarEventList {
+  static Future<List<int>> privateIndex() async {
+    var client = http.Client();
+    try {
+      var response = await client.get(
+        Uri.https(
+          MyURL.mainAPIEndpoint, 
+          'v1/private/user/calendar/event/index',
+          {"person_id": "1234567890"},
+        ),
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "pa-token": "aaaaaaaa",
+        },
+      );
+      if (response.statusCode != 200) {
+        debugPrint("status code: " + response.statusCode.toString());
+      }
+      var decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
+      debugPrint(utf8.decode(response.bodyBytes));
+      return List<int>.from(decodedResponse["event_id_list"]);
+    } finally {
+      client.close();
+    }
+  }
+}
