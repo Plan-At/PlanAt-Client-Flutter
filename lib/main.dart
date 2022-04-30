@@ -17,7 +17,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-  static const String APP_TITLE = "Plan@ Client";
+  static const String APP_TITLE = "PlanAt Client";
 
   // This widget is the root of your application.
   @override
