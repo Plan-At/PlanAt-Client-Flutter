@@ -17,6 +17,10 @@ class CalendarEventCard extends StatefulWidget {
 class _CalendarEventCardState extends State<CalendarEventCard> {
   @override
   Widget build(BuildContext context) {
+    double calculatedHeight = (widget.d.duration / 86400) * 630;
+    if (calculatedHeight < 100) {
+      calculatedHeight = 100;
+    }
     return Card(
       child: InkWell(
         splashColor: Colors.blue.withAlpha(30),
@@ -38,7 +42,7 @@ class _CalendarEventCardState extends State<CalendarEventCard> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    Text("EventID: "+widget.d.event_id),
+                    Text("EventID: "+widget.d.event_id.toString()),
                     Text(widget.d.start_time.text+'~'+widget.d.end_time.text),
                     Text(widget.d.description),
                   ],
@@ -48,7 +52,7 @@ class _CalendarEventCardState extends State<CalendarEventCard> {
         },
         child: SizedBox(
           width: 300,
-          height: (widget.d.duration / 86400) * 630,
+          height: calculatedHeight,
           child: Column(
             children: [
               Text(
@@ -71,7 +75,7 @@ class _CalendarEventCardState extends State<CalendarEventCard> {
 class CalendarEventData {
   /// Although the variable name not met the dart naming convention,
   /// but just for match what's present in the REST API
-  String event_id;
+  int event_id;
   String display_name;
   String description;
   TimeObject start_time;
@@ -86,7 +90,7 @@ class CalendarEventData {
 class CalendarEventDataGenerator {
   static CalendarEventData placeholder() {
     return CalendarEventData(
-      "1234567890123456",
+      1234567890123456,
       "placeholder event",
       "describe the event here",
       TimeObject(
@@ -106,6 +110,7 @@ class CalendarEventDataGenerator {
 
   /// using the curley bracket to activate named parameter
   static Future<CalendarEventData> singleEvent({required http.Client httpClient, String pa_token="aaaaaaaa", String event_id="1649358548151936"}) async {
+    debugPrint("Fetching "+event_id);
     try {
       var response = await httpClient.get(
         /// Query parameter need be pass in separately, otherwise the question mark
@@ -122,10 +127,11 @@ class CalendarEventDataGenerator {
         },
       );
       if (response.statusCode != 200) {
-        debugPrint("status code: " + response.statusCode.toString());
+        throw Exception("status code: " + response.statusCode.toString());
       }
       var decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
       debugPrint(utf8.decode(response.bodyBytes));
+      /// WARNING: when did not actually get the event data from backend will error when getting value of these key
       return CalendarEventData(
         decodedResponse["event_id"],
         decodedResponse["display_name"],
@@ -152,8 +158,12 @@ class CalendarEventDataGenerator {
   static Future<List<CalendarEventData>> multipleEvent({required http.Client httpClient, required List<String> event_id_list, String pa_token="aaaaaaaa"}) async {
     List<CalendarEventData> retList = [];
     for (String currentElement in event_id_list) {
-      CalendarEventData currentRet = await singleEvent(httpClient: httpClient, event_id: currentElement);
-      retList.add(currentRet);
+      try {
+        CalendarEventData currentRet = await singleEvent(httpClient: httpClient, event_id: currentElement);
+        retList.add(currentRet);
+      } catch (eee){
+        debugPrint(eee.toString());
+      }
     }
     return retList;
   }
@@ -165,8 +175,7 @@ class TimeObject {
   String timezone_name;
   int timezone_difference;
 
-  TimeObject(
-      this.text, this.timestamp, this.timezone_name, this.timezone_difference);
+  TimeObject(this.text, this.timestamp, this.timezone_name, this.timezone_difference);
 }
 
 class TagObject {

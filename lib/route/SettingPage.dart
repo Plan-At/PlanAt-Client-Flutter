@@ -37,15 +37,6 @@ class _MySettingPageState extends State<MySettingPage> {
                   },
                 ),
                 Text(globalVar.exampleCED.display_name),
-                ElevatedButton(
-                  child: const Text("Fetch CalendarEventIndex"),
-                  onPressed: () {
-                    CalendarEventList.privateIndex(globalVar.apiClient).then(((ret) {
-                      globalVar.calendarEventIndex = ret;
-                      debugPrint(globalVar.calendarEventIndex.toString());
-                    }));
-                  },
-                ),
                 FloatingActionButton(
                   onPressed: () {setState(() {
                     globalVar.incrementMyVariable();

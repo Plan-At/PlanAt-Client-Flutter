@@ -16,8 +16,6 @@ class _MyMyEventListPageState extends State<MyEventListPage> {
 
   @override
   Widget build(BuildContext context) {
-    List<CalendarEventCard> showedCalendarEventCard = [CalendarEventCard(d: globalVar.exampleCED)];
-
     return Row(
       children: [
         Expanded(
@@ -26,6 +24,15 @@ class _MyMyEventListPageState extends State<MyEventListPage> {
             children: [
               const Text("Create CalendarEvent"),
               MyStyle.blackDivider,
+              ElevatedButton(
+                child: const Text("Fetch CalendarEventIndex"),
+                onPressed: () {
+                  CalendarEventList.privateIndex(globalVar.apiClient).then(((ret) {
+                    globalVar.calendarEventIndex = ret;
+                    debugPrint(globalVar.calendarEventIndex.toString());
+                  }));
+                },
+              ),
               ElevatedButton(
                 child: const Text("Fetch CalendarEventCard(s)"),
                 onPressed: () {
@@ -38,7 +45,10 @@ class _MyMyEventListPageState extends State<MyEventListPage> {
                     globalVar.someCalendarEventData = ret;
                     debugPrint("Finished Fetching events");
                     for (CalendarEventData currentCED in globalVar.someCalendarEventData){
-                      globalVar.someCalendarEventCard.add(CalendarEventCard(d: currentCED));
+                      setState(() {
+                        globalVar.someCalendarEventCard.add(CalendarEventCard(d: currentCED));
+                        debugPrint("globalVar.someCalendarEventCard.length: "+globalVar.someCalendarEventCard.length.toString());
+                      });
                     }
                     debugPrint("Finished creating event card");
                   });
@@ -51,7 +61,20 @@ class _MyMyEventListPageState extends State<MyEventListPage> {
         Expanded(
           flex: 1,
           child: Column(
-            children: List.from([const Text("All CalendarEvent"), MyStyle.blackDivider])..addAll(showedCalendarEventCard),
+            // children: List.from([const Text("All CalendarEvent"), MyStyle.blackDivider])..addAll(globalVar.someCalendarEventCard),
+            children: [
+              Row(
+                children: [
+                  const Text("All CalendarEvent"),
+                  const Spacer(),
+                  Text("There are "+globalVar.someCalendarEventCard.length.toString()+" event(s)"),
+                ],
+              ),
+              MyStyle.blackDivider,
+              Column(
+                children: globalVar.someCalendarEventCard,
+              ),
+            ],
           ),
         ),
       ],
