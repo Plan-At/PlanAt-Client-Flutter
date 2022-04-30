@@ -17,13 +17,13 @@ class _MyProfilePageState extends State<MyProfilePage> {
             children: <Widget>[
               Card(
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)
+                  borderRadius: BorderRadius.circular(20)
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(10),
                   child: Column(
                     children: <Widget>[
-                      Image.network("https://cdn.jsdelivr.net/gh/Plan-At/static-image@main/2022/04/02/android-chrome-512x512.png"), // SVG will not work here
+                      Image.network("https://cdn.jsdelivr.net/gh/Plan-At/static-image@main/2022/04/02/android-chrome-512x512.png"), /// SVG will not work here
                       const SizedBox(height: 20),
                       const Text(
                         "Your Name",
@@ -37,27 +37,17 @@ class _MyProfilePageState extends State<MyProfilePage> {
               ),
               Card(
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20)
+                  borderRadius: BorderRadius.circular(20)
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(10),
                   child: Column(
                     children: const <Widget>[
-                      Text(
-                          "Website"
-                      ),
-                      Divider(
-                        height: 10,
-                      ),
-                      Text(
-                          "Github"
-                      ),
-                      Divider(
-                        height: 10,
-                      ),
-                      Text(
-                          "Twitter"
-                      ),
+                      Text("Website"),
+                      Divider(height: 10,),
+                      Text("Github"),
+                      Divider(height: 10,),
+                      Text("Twitter"),
                     ],
                   ),
                 ),
@@ -69,9 +59,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
           flex: 7,
           child: Column(
             children: const <Widget>[
-              Text(
-                  "Here should be a card"
-              ),
+              Text("Here should be a card"),
             ],
           ),
         ),

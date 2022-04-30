@@ -23,25 +23,27 @@ class _CalendarEventCardState extends State<CalendarEventCard> {
         onTap: () {
           debugPrint('Card tapped');
           showDialog(
-              context: context,
-              builder: (_) {
-                return AlertDialog(
-                  title: const Text("Event Detail"),
-                  content: Column(
-                    children: [
-                      Text(
-                        widget.d.display_name,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
+            context: context,
+            builder: (_) {
+              /// The AlertDialog is something but occupying entire screen
+              /// but if click or touch on anywhere will dismiss it
+              return AlertDialog(
+                title: const Text("Event Detail"),
+                content: Column(
+                  children: [
+                    Text(
+                      widget.d.display_name,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
                       ),
-                      Text(widget.d.start_time.text +'~' +widget.d.end_time.text),
-                      Text(widget.d.description),
-                    ],
-                  ),
-                );
-              });
+                    ),
+                    Text(widget.d.start_time.text+'~'+widget.d.end_time.text),
+                    Text(widget.d.description),
+                  ],
+                ),
+              );
+            });
         },
         child: SizedBox(
           width: 300,
@@ -55,7 +57,7 @@ class _CalendarEventCardState extends State<CalendarEventCard> {
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              Text(widget.d.start_time.text + '~' + widget.d.end_time.text),
+              Text(widget.d.start_time.text+'~'+widget.d.end_time.text),
               Text(widget.d.description),
             ],
           ),
@@ -66,15 +68,16 @@ class _CalendarEventCardState extends State<CalendarEventCard> {
 }
 
 class CalendarEventData {
+  /// Although the variable name not met the dart naming convention,
+  /// but just for match what's present in the REST API
   String display_name;
   String description;
   TimeObject start_time;
   TimeObject end_time;
   late int duration;
 
-  CalendarEventData(
-      this.display_name, this.description, this.start_time, this.end_time) {
-    duration = end_time.timestamp - start_time.timestamp;
+  CalendarEventData(this.display_name, this.description, this.start_time, this.end_time) {
+    duration = end_time.timestamp - start_time.timestamp; /// this. keyword not necessary here
   }
 }
 
@@ -102,11 +105,13 @@ class CalendarEventDataGenerator {
     var client = http.Client();
     try {
       var response = await client.get(
+        /// Query parameter need be pass in separately, otherwise the question mark
         Uri.https(
           MyURL.mainAPIEndpoint, 
           'v1/universal/user/calendar/event',
           {"event_id": "1649358548151936"},
         ),
+        /// Without "Accept" and "Content-Type" will have CORS error on Chrome
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json",
@@ -181,10 +186,11 @@ class CalendarEventList {
         },
       );
       if (response.statusCode != 200) {
-        debugPrint("status code: " + response.statusCode.toString());
+        debugPrint("status code: "+response.statusCode.toString());
       }
       var decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
       debugPrint(utf8.decode(response.bodyBytes));
+      /// If not specify type using .from() will always be List<dynamic>
       return List<int>.from(decodedResponse["event_id_list"]);
     } finally {
       client.close();

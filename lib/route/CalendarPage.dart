@@ -54,9 +54,7 @@ class _MyCalendarPageState extends State<MyCalendarPage> {
         Row(
           children: [
             const Text("Weekly View"),
-            const Spacer(
-              flex: 49,
-            ),
+            const Spacer(flex: 49,),
             IconButton(
               icon: const Icon(Icons.post_add_rounded),
               onPressed: () {setState(() {

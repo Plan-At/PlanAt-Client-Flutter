@@ -10,6 +10,6 @@ class MyEventListPage extends StatefulWidget {
 class _MyMyEventListPageState extends State<MyEventListPage> {
   @override
   Widget build(BuildContext context) {
-    return const Text("here should be the contact page");
+    return const Text("here should be the event menu page");
   }
 }
