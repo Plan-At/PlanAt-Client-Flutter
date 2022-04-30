@@ -1,11 +1,11 @@
 {
-    "name": "v1",
-    "short_name": "v1",
+    "name": "PlanAt Web Client",
+    "short_name": "PlanAt",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
-    "description": "A new Flutter project.",
+    "description": "A client for PlanAt based using Flutter",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [
