@@ -61798,13 +61798,13 @@ cK(a,b,c,d){return this.aX(a,b,c,d,0)}}
 A.Jp.prototype={}
 A.GX.prototype={}
 A.DO.prototype={
-F(a,b){return new A.up(B.D1,"Plan@ Client",A.abr(null,B.fV),!1,null)}}
+F(a,b){return new A.up(B.D1,"PlanAt Client",A.abr(null,B.fV),!1,null)}}
 A.uM.prototype={
 aj(){return new A.JX(A.aeJ(),B.j)}}
 A.JX.prototype={
 F(a,b){var s,r,q,p,o=this,n=null
 o.a.toString
-s=A.ad8(A.df("Plan@ Client",n,n,n,n,n,n))
+s=A.ad8(A.df("PlanAt Client",n,n,n,n,n,n))
 r=o.d
 q=A.b([A.j9(n,B.yv,new A.a5o(o),0,"Dashboard"),A.j9(B.K9,B.yB,new A.a5p(o),1,"Notification"),A.j9(n,B.yD,new A.a5q(o),2,"Event List"),A.j9(n,B.yw,new A.a5s(o),3,"Calendar"),A.j9(n,B.yt,new A.a5t(o),4,"Contact"),A.j9(n,B.yA,new A.a5u(o),5,"Organization"),A.j9(n,B.yx,new A.a5v(o),6,"Profile"),A.j9(n,B.yr,new A.a5w(o),7,"SubApp"),A.j9(n,B.yu,new A.a5x(o),8,"Setting"),A.j9(n,B.yC,new A.a5y(),9,"Exit")],t.zn)
 p=t.p
