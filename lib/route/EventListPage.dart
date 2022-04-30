@@ -30,14 +30,18 @@ class _MyMyEventListPageState extends State<MyEventListPage> {
                   CalendarEventList.privateIndex(globalVar.apiClient).then(((ret) {
                     globalVar.calendarEventIndex = ret;
                     debugPrint(globalVar.calendarEventIndex.toString());
+                    debugPrint("Finished fetch CalendarEventIndex");
+                    /// setState() is not required to use the snack bar
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Finished fetch CalendarEventIndex")));
                   }));
                 },
               ),
               ElevatedButton(
                 child: const Text("Fetch CalendarEventCard(s)"),
                 onPressed: () {
-                  List<String> CEIndex = [];
                   /// Probably will take too much time to fetch all the event at once
+                  /// List.take() is used to trim the list to certain length
+                  List<String> CEIndex = [];
                   for (int currentElement in globalVar.calendarEventIndex.take(10)){
                     CEIndex.add(currentElement.toString());
                   }
@@ -51,7 +55,14 @@ class _MyMyEventListPageState extends State<MyEventListPage> {
                       });
                     }
                     debugPrint("Finished creating event card");
+                    ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Finished creating event card")));
                   });
+                },
+              ),
+              ElevatedButton(
+                child: const Text("Show a SnackBar"),
+                onPressed: () {
+                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("An example SnackBar")));
                 },
               ),
             ],
