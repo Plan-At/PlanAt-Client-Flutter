@@ -28,7 +28,7 @@ class _MySettingPageState extends State<MySettingPage> {
                 ElevatedButton(
                   child: const Text("Fetch CalendarEventData"),
                   onPressed: () {
-                    CalendarEventDataGenerator.singleEvent(globalVar.apiClient).then((ret) {
+                    CalendarEventDataGenerator.singleEvent(httpClient: globalVar.apiClient).then((ret) {
                       setState(() {
                         globalVar.exampleCED = ret;
                         debugPrint(globalVar.exampleCED.display_name);

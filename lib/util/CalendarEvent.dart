@@ -38,6 +38,7 @@ class _CalendarEventCardState extends State<CalendarEventCard> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    Text("EventID: "+widget.d.event_id),
                     Text(widget.d.start_time.text+'~'+widget.d.end_time.text),
                     Text(widget.d.description),
                   ],
@@ -70,13 +71,14 @@ class _CalendarEventCardState extends State<CalendarEventCard> {
 class CalendarEventData {
   /// Although the variable name not met the dart naming convention,
   /// but just for match what's present in the REST API
+  String event_id;
   String display_name;
   String description;
   TimeObject start_time;
   TimeObject end_time;
   late int duration;
 
-  CalendarEventData(this.display_name, this.description, this.start_time, this.end_time) {
+  CalendarEventData(this.event_id, this.display_name, this.description, this.start_time, this.end_time) {
     duration = end_time.timestamp - start_time.timestamp; /// this. keyword not necessary here
   }
 }
@@ -84,6 +86,7 @@ class CalendarEventData {
 class CalendarEventDataGenerator {
   static CalendarEventData placeholder() {
     return CalendarEventData(
+      "1234567890123456",
       "placeholder event",
       "describe the event here",
       TimeObject(
@@ -101,20 +104,21 @@ class CalendarEventDataGenerator {
     );
   }
 
-  static Future<CalendarEventData> singleEvent(http.Client httpClient) async {
+  /// using the curley bracket to activate named parameter
+  static Future<CalendarEventData> singleEvent({required http.Client httpClient, String pa_token="aaaaaaaa", String event_id="1649358548151936"}) async {
     try {
       var response = await httpClient.get(
         /// Query parameter need be pass in separately, otherwise the question mark
         Uri.https(
           MyURL.mainAPIEndpoint, 
           'v1/universal/user/calendar/event',
-          {"event_id": "1649358548151936"},
+          {"event_id": event_id},
         ),
         /// Without "Accept" and "Content-Type" will have CORS error on Chrome
         headers: {
           "Accept": "application/json",
           "Content-Type": "application/json",
-          "pa-token": "aaaaaaaa",
+          "pa-token": pa_token,
         },
       );
       if (response.statusCode != 200) {
@@ -123,6 +127,7 @@ class CalendarEventDataGenerator {
       var decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
       debugPrint(utf8.decode(response.bodyBytes));
       return CalendarEventData(
+        decodedResponse["event_id"],
         decodedResponse["display_name"],
         decodedResponse["description"],
         TimeObject(
@@ -139,8 +144,18 @@ class CalendarEventDataGenerator {
         ),
       );
     } finally {
-      httpClient.close();
+      // httpClient.close();
     }
+  }
+
+  /// this still fetching all the data in synchronous order
+  static Future<List<CalendarEventData>> multipleEvent({required http.Client httpClient, required List<String> event_id_list, String pa_token="aaaaaaaa"}) async {
+    List<CalendarEventData> retList = [];
+    for (String currentElement in event_id_list) {
+      CalendarEventData currentRet = await singleEvent(httpClient: httpClient, event_id: currentElement);
+      retList.add(currentRet);
+    }
+    return retList;
   }
 }
 
@@ -191,7 +206,7 @@ class CalendarEventList {
       /// If not specify type using .from() will always be List<dynamic>
       return List<int>.from(decodedResponse["event_id_list"]);
     } finally {
-      httpClient.close();
+      // httpClient.close();
     }
   }
 }
