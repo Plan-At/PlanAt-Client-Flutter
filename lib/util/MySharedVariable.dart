@@ -9,7 +9,7 @@ class MySharedVariable {
   /// All variables need have some placeholder content
   MySharedVariable._internal() {
     myVariable = 0;
-    exampleCED = CalendarEventDataGenerator.placeholder();
+    exampleCED = CalendarEventDataHelper.placeholder();
     calendarEventIndex = [];
     apiClient = http.Client();
     someCalendarEventCard = [];

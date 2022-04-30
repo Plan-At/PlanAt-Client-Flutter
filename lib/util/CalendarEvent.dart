@@ -75,6 +75,7 @@ class _CalendarEventCardState extends State<CalendarEventCard> {
 class CalendarEventData {
   /// Although the variable name not met the dart naming convention,
   /// but just for match what's present in the REST API
+  int structure_version;
   int event_id;
   String display_name;
   String description;
@@ -82,14 +83,15 @@ class CalendarEventData {
   TimeObject end_time;
   late int duration;
 
-  CalendarEventData(this.event_id, this.display_name, this.description, this.start_time, this.end_time) {
+  CalendarEventData(this.structure_version, this.event_id, this.display_name, this.description, this.start_time, this.end_time) {
     duration = end_time.timestamp - start_time.timestamp; /// this. keyword not necessary here
   }
 }
 
-class CalendarEventDataGenerator {
+class CalendarEventDataHelper {
   static CalendarEventData placeholder() {
     return CalendarEventData(
+      4,
       1234567890123456,
       "placeholder event",
       "describe the event here",
@@ -132,23 +134,30 @@ class CalendarEventDataGenerator {
       var decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
       debugPrint(utf8.decode(response.bodyBytes));
       /// WARNING: when did not actually get the event data from backend will error when getting value of these key
-      return CalendarEventData(
-        decodedResponse["event_id"],
-        decodedResponse["display_name"],
-        decodedResponse["description"],
-        TimeObject(
-          decodedResponse["start_time"]["text"],
-          decodedResponse["start_time"]["timestamp_int"],
-          decodedResponse["start_time"]["timezone_name"],
-          decodedResponse["start_time"]["timezone_offset"],
-        ),
-        TimeObject(
-          decodedResponse["end_time"]["text"],
-          decodedResponse["end_time"]["timestamp_int"],
-          decodedResponse["end_time"]["timezone_name"],
-          decodedResponse["end_time"]["timezone_offset"],
-        ),
-      );
+      /// Also should check the schema version
+      if (decodedResponse["structure_version"] == 4){
+        return CalendarEventData(
+          decodedResponse["structure_version"],
+          decodedResponse["event_id"],
+          decodedResponse["display_name"],
+          decodedResponse["description"],
+          TimeObject(
+            decodedResponse["start_time"]["text"],
+            decodedResponse["start_time"]["timestamp_int"],
+            decodedResponse["start_time"]["timezone_name"],
+            decodedResponse["start_time"]["timezone_offset"],
+          ),
+          TimeObject(
+            decodedResponse["end_time"]["text"],
+            decodedResponse["end_time"]["timestamp_int"],
+            decodedResponse["end_time"]["timezone_name"],
+            decodedResponse["end_time"]["timezone_offset"],
+          ),
+        );
+      }
+      else{
+        throw Exception("");
+      }
     } finally {
       // httpClient.close();
     }
