@@ -28,9 +28,9 @@ class _MySettingPageState extends State<MySettingPage> {
                 ElevatedButton(
                   child: const Text("Fetch CalendarEventData"),
                   onPressed: () {
-                    CalendarEventDataGenerator.singleEvent().then((value) {
+                    CalendarEventDataGenerator.singleEvent(globalVar.apiClient).then((ret) {
                       setState(() {
-                        globalVar.exampleCED = value;
+                        globalVar.exampleCED = ret;
                         debugPrint(globalVar.exampleCED.display_name);
                       });
                     });
@@ -40,8 +40,8 @@ class _MySettingPageState extends State<MySettingPage> {
                 ElevatedButton(
                   child: const Text("Fetch CalendarEventIndex"),
                   onPressed: () {
-                    CalendarEventList.privateIndex().then(((value) {
-                      globalVar.calendarEventIndex = value;
+                    CalendarEventList.privateIndex(globalVar.apiClient).then(((ret) {
+                      globalVar.calendarEventIndex = ret;
                       debugPrint(globalVar.calendarEventIndex.toString());
                     }));
                   },

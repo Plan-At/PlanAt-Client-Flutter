@@ -101,10 +101,9 @@ class CalendarEventDataGenerator {
     );
   }
 
-  static Future<CalendarEventData> singleEvent() async {
-    var client = http.Client();
+  static Future<CalendarEventData> singleEvent(http.Client httpClient) async {
     try {
-      var response = await client.get(
+      var response = await httpClient.get(
         /// Query parameter need be pass in separately, otherwise the question mark
         Uri.https(
           MyURL.mainAPIEndpoint, 
@@ -140,7 +139,7 @@ class CalendarEventDataGenerator {
         ),
       );
     } finally {
-      client.close();
+      httpClient.close();
     }
   }
 }
@@ -170,10 +169,9 @@ class TypeObject {
 }
 
 class CalendarEventList {
-  static Future<List<int>> privateIndex() async {
-    var client = http.Client();
+  static Future<List<int>> privateIndex(http.Client httpClient) async {
     try {
-      var response = await client.get(
+      var response = await httpClient.get(
         Uri.https(
           MyURL.mainAPIEndpoint, 
           'v1/private/user/calendar/event/index',
@@ -193,7 +191,7 @@ class CalendarEventList {
       /// If not specify type using .from() will always be List<dynamic>
       return List<int>.from(decodedResponse["event_id_list"]);
     } finally {
-      client.close();
+      httpClient.close();
     }
   }
 }
