@@ -18500,7 +18500,7 @@ A.du().$1("Fetching "+a)
 p=3
 k=t.N
 s=6
-return A.as(b.lC("GET",A.agE("https","api-0.752628.xyz","v1/universal/user/calendar/event",A.aE(["event_id",a],k,t.z)),A.aE(["Accept","application/json","Content-Type","application/json","pa-token",c],k,k)),$async$Bq)
+return A.as(b.lC("GET",A.agE("https","api.752628.xyz","v1/universal/user/calendar/event",A.aE(["event_id",a],k,t.z)),A.aE(["Accept","application/json","Content-Type","application/json","pa-token",c],k,k)),$async$Bq)
 case 6:m=a1
 if(m.b!==200){k=A.c2("status code: "+B.f.i(m.b))
 throw A.c(k)}l=t.f.a(B.b3.y8(0,B.F.cX(0,m.x),null))
@@ -18571,7 +18571,7 @@ var $async$P7=A.ae(function(b,c){if(b===1){o=c
 s=p}while(true)switch(s){case 0:p=3
 k=t.N
 s=6
-return A.as(a.lC("GET",A.agE("https","api-0.752628.xyz","v1/private/user/calendar/event/index",A.aE(["person_id","1234567890"],k,t.z)),A.aE(["Accept","application/json","Content-Type","application/json","pa-token","aaaaaaaa"],k,k)),$async$P7)
+return A.as(a.lC("GET",A.agE("https","api.752628.xyz","v1/private/user/calendar/event/index",A.aE(["person_id","1234567890"],k,t.z)),A.aE(["Accept","application/json","Content-Type","application/json","pa-token","aaaaaaaa"],k,k)),$async$P7)
 case 6:m=c
 if(m.b!==200)A.du().$1("status code: "+B.f.i(m.b))
 l=t.f.a(B.b3.y8(0,B.F.cX(0,m.x),null))
