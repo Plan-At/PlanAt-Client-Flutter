@@ -87,9 +87,13 @@ class _MyMyEventListPageState extends State<MyEventListPage> {
                 onPressed: () {
                   showDatePicker(
                     context: context, 
-                    initialDate:DateTime.now(), 
-                    firstDate: DateTime(2022), 
-                    lastDate: DateTime(2023)
+                    // Have to procide some date here
+                    // So the start year is when the UNIX timestamp system begin
+                    // And the end year is when the timestamp still under ten-digit
+                    // To compatible with current backend
+                    initialDate: DateTime.now(), 
+                    firstDate: DateTime(1970), 
+                    lastDate: DateTime(2286), 
                   ).then((value) {
                     if (value != null){
                       setState(() {
@@ -111,9 +115,11 @@ class _MyMyEventListPageState extends State<MyEventListPage> {
             children: [
               Row(
                 children: [
+                  const Spacer(),
                   const Text("All CalendarEvent"),
                   const Spacer(),
                   Text("There are "+globalVar.someCalendarEventCard.length.toString()+" event(s)"),
+                  const Spacer(),
                 ],
               ),
               MyStyle.blackDivider,
