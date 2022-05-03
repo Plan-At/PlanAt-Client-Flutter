@@ -82,6 +82,24 @@ class _MyMyEventListPageState extends State<MyEventListPage> {
                 },
               ),
               Text(globalVar.inputedStartTime.hour.toString()+":"+globalVar.inputedStartTime.minute.toString()),
+              ElevatedButton(
+                child: const Text("Show Date Picker"),
+                onPressed: () {
+                  showDatePicker(
+                    context: context, 
+                    initialDate:DateTime.now(), 
+                    firstDate: DateTime(2022), 
+                    lastDate: DateTime(2023)
+                  ).then((value) {
+                    if (value != null){
+                      setState(() {
+                        globalVar.inputedStartDate = value;
+                      });
+                    }
+                  });
+                },
+              ),
+              Text(globalVar.inputedStartDate.day.toString()),
             ],
           ),
         ),
