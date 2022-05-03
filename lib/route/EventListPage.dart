@@ -65,6 +65,23 @@ class _MyMyEventListPageState extends State<MyEventListPage> {
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("An example SnackBar")));
                 },
               ),
+              ElevatedButton(
+                child: const Text("Show Time Picker"),
+                onPressed: () {
+                  showTimePicker(
+                    context: context, 
+                    initialTime: globalVar.inputedStartTime,
+                  ).then((ret) {
+                    // the returned TimeOfDay could be null so add a check here
+                    if (ret != null){
+                      setState(() {
+                        globalVar.inputedStartTime = ret;
+                      });
+                    }
+                  });
+                },
+              ),
+              Text(globalVar.inputedStartTime.hour.toString()+":"+globalVar.inputedStartTime.minute.toString()),
             ],
           ),
         ),

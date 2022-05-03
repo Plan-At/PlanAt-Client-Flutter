@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import './CalendarEvent.dart';
 
 import 'package:http/http.dart' as http;
@@ -14,6 +16,7 @@ class MySharedVariable {
     apiClient = http.Client();
     someCalendarEventCard = [];
     someCalendarEventData = [];
+    inputedStartTime = TimeOfDay.now();
   }
 
   late int myVariable;
@@ -22,6 +25,7 @@ class MySharedVariable {
   late http.Client apiClient;
   late List<CalendarEventCard> someCalendarEventCard;
   late List<CalendarEventData> someCalendarEventData;
+  late TimeOfDay inputedStartTime;
 
   void incrementMyVariable() {
     myVariable++;
