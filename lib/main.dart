@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:easy_sidemenu/easy_sidemenu.dart';
 
+import '../util/OrientationHelper.dart';
+
 import './route/DashboardPage.dart';
 import './route/ProfilePage.dart';
 import './route/SettingPage.dart';
@@ -195,24 +197,18 @@ class _MyHomePageState extends State<MyHomePage> {
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
-              child: Text('Drawer Header'),
+              child: Text('Mini Tool'),
             ),
             ListTile(
-              title: const Text('DONT CLICK ME'),
+              title: const Text('Landscape Mode'),
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const MyProfilePage()));
+                setLandscapeOrientation();
               },
             ),
             ListTile(
-              title: const Text('DONT CLICK ME'),
+              title: const Text('Portrait Mode'),
               onTap: () {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const MySettingPage()));
+                setPortraitOrientation();
               },
             ),
           ],
