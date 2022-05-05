@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../util/CalendarEvent.dart';
 import '../util/MySharedVariable.dart';
 import '../util/MyWidget.dart';
+import '../component/DateAndTimePicker.dart';
 
 class MyEventListPage extends StatefulWidget {
   const MyEventListPage({Key? key}) : super(key: key);
@@ -65,66 +66,9 @@ class _MyMyEventListPageState extends State<MyEventListPage> {
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("An example SnackBar")));
                 },
               ),
-              ElevatedButton(
-                child: const Text("Show Time Picker"),
-                onPressed: () {
-                  showTimePicker(
-                    context: context, 
-                    initialTime: globalVar.inputedStartTime,
-                  ).then((ret) {
-                    // the returned TimeOfDay could be null so add a check here
-                    if (ret != null){
-                      setState(() {
-                        globalVar.inputedStartTime = ret;
-                      });
-                    }
-                  });
-                },
-              ),
-              Text(globalVar.inputedStartTime.hour.toString()+":"+globalVar.inputedStartTime.minute.toString()),
-              ElevatedButton(
-                child: const Text("Show Date Picker"),
-                onPressed: () {
-                  showDatePicker(
-                    context: context, 
-                    // Have to procide some date here
-                    // So the start year is when the UNIX timestamp system begin
-                    // And the end year is when the timestamp still under ten-digit
-                    // To compatible with current backend
-                    initialDate: DateTime.now(), 
-                    firstDate: DateTime(1970), 
-                    lastDate: DateTime(2286), 
-                  ).then((value) {
-                    if (value != null){
-                      setState(() {
-                        globalVar.inputedStartDate = value;
-                      });
-                    }
-                  });
-                },
-              ),
-              Text(globalVar.inputedStartDate.day.toString()),
-              ElevatedButton(
-                child: const Text("Show Date Range Picker"),
-                onPressed: () {
-                  showDateRangePicker(
-                    context: context, 
-                    // Have to procide some date here
-                    // So the start year is when the UNIX timestamp system begin
-                    // And the end year is when the timestamp still under ten-digit
-                    // To compatible with current backend
-                    firstDate: DateTime(1970), 
-                    lastDate: DateTime(2286), 
-                  ).then((value) {
-                    if (value != null){
-                      setState(() {
-                        globalVar.inputedDateRange = value;
-                      });
-                    }
-                  });
-                },
-              ),
-              Text(globalVar.inputedDateRange.start.day.toString()+"~"+globalVar.inputedDateRange.end.day.toString()),
+              MyStyle.blackDivider,
+              const DateAndTimePicker(),
+              MyStyle.blackDivider,
             ],
           ),
         ),

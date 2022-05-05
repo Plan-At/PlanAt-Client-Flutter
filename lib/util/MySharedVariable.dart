@@ -17,6 +17,7 @@ class MySharedVariable {
     someCalendarEventCard = [];
     someCalendarEventData = [];
     inputedStartTime = TimeOfDay.now();
+    inputedEndTime = TimeOfDay.now();
     inputedStartDate = DateTime.now();
     inputedDateRange = DateTimeRange(start: DateTime.now(), end: DateTime.now());
   }
@@ -28,6 +29,7 @@ class MySharedVariable {
   late List<CalendarEventCard> someCalendarEventCard;
   late List<CalendarEventData> someCalendarEventData;
   late TimeOfDay inputedStartTime;
+  late TimeOfDay inputedEndTime;
   late DateTime inputedStartDate;
   late DateTimeRange inputedDateRange;
 
