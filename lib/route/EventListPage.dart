@@ -104,6 +104,27 @@ class _MyMyEventListPageState extends State<MyEventListPage> {
                 },
               ),
               Text(globalVar.inputedStartDate.day.toString()),
+              ElevatedButton(
+                child: const Text("Show Date Range Picker"),
+                onPressed: () {
+                  showDateRangePicker(
+                    context: context, 
+                    // Have to procide some date here
+                    // So the start year is when the UNIX timestamp system begin
+                    // And the end year is when the timestamp still under ten-digit
+                    // To compatible with current backend
+                    firstDate: DateTime(1970), 
+                    lastDate: DateTime(2286), 
+                  ).then((value) {
+                    if (value != null){
+                      setState(() {
+                        globalVar.inputedDateRange = value;
+                      });
+                    }
+                  });
+                },
+              ),
+              Text(globalVar.inputedDateRange.start.day.toString()+"~"+globalVar.inputedDateRange.end.day.toString()),
             ],
           ),
         ),

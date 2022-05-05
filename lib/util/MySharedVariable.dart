@@ -18,6 +18,7 @@ class MySharedVariable {
     someCalendarEventData = [];
     inputedStartTime = TimeOfDay.now();
     inputedStartDate = DateTime.now();
+    inputedDateRange = DateTimeRange(start: DateTime.now(), end: DateTime.now());
   }
 
   late int myVariable;
@@ -28,6 +29,7 @@ class MySharedVariable {
   late List<CalendarEventData> someCalendarEventData;
   late TimeOfDay inputedStartTime;
   late DateTime inputedStartDate;
+  late DateTimeRange inputedDateRange;
 
   void incrementMyVariable() {
     myVariable++;
