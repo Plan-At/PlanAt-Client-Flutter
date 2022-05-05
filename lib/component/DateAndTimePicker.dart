@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import '../util/MySharedVariable.dart';
 
 class DateAndTimePicker extends StatefulWidget {
-  const DateAndTimePicker({Key? key}) : super(key: key);
+  DateAndTimePicker({Key? key}) : super(key: key);
+
+  late TimeOfDay inputedStartTime;
 
   @override
   State<DateAndTimePicker> createState() => _DateAndTimePickerState();
@@ -11,6 +13,9 @@ class DateAndTimePicker extends StatefulWidget {
 
 class _DateAndTimePickerState extends State<DateAndTimePicker> {
   final MySharedVariable globalVar = MySharedVariable();
+  // TODO: figure out where to put these variable
+  TimeOfDay inputedEndtTime = TimeOfDay.now();
+
   @override
   Widget build(BuildContext context) {
     return Column(

@@ -67,7 +67,7 @@ class _MyMyEventListPageState extends State<MyEventListPage> {
                 },
               ),
               MyStyle.blackDivider,
-              const DateAndTimePicker(),
+              DateAndTimePicker(),
               MyStyle.blackDivider,
             ],
           ),

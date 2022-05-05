@@ -24,32 +24,6 @@ class _CalendarEventCardState extends State<CalendarEventCard> {
     return Card(
       child: InkWell(
         splashColor: Colors.blue.withAlpha(30),
-        onTap: () {
-          debugPrint('Card tapped');
-          showDialog(
-            context: context,
-            builder: (_) {
-              /// The AlertDialog is something but occupying entire screen
-              /// but if click or touch on anywhere will dismiss it
-              return AlertDialog(
-                title: const Text("Event Detail"),
-                content: Column(
-                  children: [
-                    Text(
-                      widget.d.display_name,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    Text("EventID: "+widget.d.event_id.toString()),
-                    Text(widget.d.start_time.text+'~'+widget.d.end_time.text),
-                    Text(widget.d.description),
-                  ],
-                ),
-              );
-            });
-        },
         child: SizedBox(
           width: 300,
           height: calculatedHeight,
@@ -67,6 +41,32 @@ class _CalendarEventCardState extends State<CalendarEventCard> {
             ],
           ),
         ),
+        onTap: () {
+          debugPrint('Card tapped');
+          showDialog(
+            context: context,
+            builder: (_) {
+              /// The AlertDialog is something but occupying entire screen
+              /// but if click or touch on anywhere will dismiss it
+              return AlertDialog(
+                title: const Text("Event Detail"),
+                content: Column(
+                  children: [
+                    SelectableText(
+                      widget.d.display_name,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    SelectableText("EventID: "+widget.d.event_id.toString()),
+                    SelectableText(widget.d.start_time.text+'~'+widget.d.end_time.text),
+                    SelectableText(widget.d.description),
+                  ],
+                ),
+              );
+            });
+        },
       ),
     );
   }
