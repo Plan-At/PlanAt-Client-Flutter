@@ -88,13 +88,13 @@ class _MyMyEventListPageState extends State<MyEventListPage> {
                 ],
               ),
               MyStyle.blackDivider,
-              Column(
-                children: globalVar.someCalendarEventCard,
-              )
+              // Column(
+              //   children: globalVar.someCalendarEventCard,
+              // ),
               /// Not Really Scrollable
               // SingleChildScrollView(
               //   controller: ScrollController(),
-              //   child: Stack(
+              //   child: Column(
               //     children: globalVar.someCalendarEventCard,
               //   ),
               // ),
@@ -110,6 +110,13 @@ class _MyMyEventListPageState extends State<MyEventListPage> {
               //     ),
               //   ],
               // ),
+              /// Try Again
+              Expanded(
+                child: ListView(
+                  shrinkWrap: true,
+                  children: globalVar.someCalendarEventCard,
+                ),
+              ),
             ],
           ),
         ),
