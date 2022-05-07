@@ -111,6 +111,7 @@ class _MyMyEventListPageState extends State<MyEventListPage> {
               //   ],
               // ),
               /// Try Again
+              /// But setState() of this page will not update
               Expanded(
                 child: ListView(
                   shrinkWrap: true,
