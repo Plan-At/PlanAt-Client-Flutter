@@ -88,9 +88,41 @@ class _MyMyEventListPageState extends State<MyEventListPage> {
                 ],
               ),
               MyStyle.blackDivider,
-              Column(
-                children: globalVar.someCalendarEventCard,
+              /// Not Really Scrollable
+              SingleChildScrollView(
+                controller: ScrollController(),
+                child: Stack(
+                  children: globalVar.someCalendarEventCard,
+                ),
               ),
+              /// Unable to render the cards
+              // ListView(
+              //   shrinkWrap: true, // Without this will error: Vertical viewport was given unbounded height.
+              //   // children: globalVar.someCalendarEventCard,
+              //   children: const [
+              //     Text('1\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'),
+              //     Text('2\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'),
+              //     Text('3\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'),
+              //     Text('4\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'),
+              //     Text('5\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'),
+              //     Text('6\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'),
+              //     Text('7\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'),
+              //     Text('8\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'),
+              //   ],
+              // ),
+              /// Same issue, still overflowing
+              // Scrollbar(
+              //   child: Column(
+              //     children: globalVar.someCalendarEventCard,
+              //   ),
+              // ),
+              /// Even more confusing
+              // ListView.builder(
+              //   itemCount: 10,
+              //   itemBuilder: (context, index) {
+              //     return Text("$index");
+              //   },
+              // ),
             ],
           ),
         ),

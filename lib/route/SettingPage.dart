@@ -44,9 +44,7 @@ class _MySettingPageState extends State<MySettingPage> {
                   tooltip: 'Increment',
                   child: const Icon(Icons.add),
                 ),
-                Text(
-                    'Shared number: ${globalVar.myVariable}'
-                ),
+                Text('Shared number: ${globalVar.myVariable}'),
                 TextField(
                   controller: myTextFieldController,
                 ),
@@ -58,33 +56,15 @@ class _MySettingPageState extends State<MySettingPage> {
                     });
                   },
                 ),
-                Text(
-                    inputtedText
-                ),
-                const Text(
-                    '1\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'
-                ),
-                const Text(
-                    '2\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'
-                ),
-                const Text(
-                    '3\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'
-                ),
-                const Text(
-                    '4\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'
-                ),
-                const Text(
-                    '5\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'
-                ),
-                const Text(
-                    '6\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'
-                ),
-                const Text(
-                    '7\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'
-                ),
-                const Text(
-                    '8\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'
-                ),
+                Text(inputtedText),
+                const Text('1\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'),
+                const Text('2\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'),
+                const Text('3\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'),
+                const Text('4\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'),
+                const Text('5\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'),
+                const Text('6\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'),
+                const Text('7\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'),
+                const Text('8\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n!\n'),
               ],
             ),
           ),
