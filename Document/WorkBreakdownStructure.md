@@ -8,3 +8,4 @@
 |29 Apr 2022 - 1 May|Popup Interface & Writing in-code comments|Check details of CalendarEvent + get CalendarEvents|Fundamental|5 Hours|Finished|Still lots of hard-coded|
 |30 Apr 2022 - 30 Apr 2022 |Popup notification (SnackBar)|"Print" something directly on the button of screen instead of put everything in console|Fundamental|0.5 Hours|Finished|Somehow it can only show one message at once|
 |2 May 2022 - 5 May 2022 |Date and Time picker (just the interface)|Candidate interface to set the time and date for the event creation and modification|Fundamental|3 Hours|Finished|Somehow there's no single interface to do both of them & need convert the result to timestamp|
+|6 May 2022 - 6 May 2022 |make the Event Overview scrollable||Very High|2 Hours|Finished|Even Stack Overflow not working|
