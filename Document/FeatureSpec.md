@@ -44,6 +44,9 @@ Sections of the project:
 
 
 ## Boneyard
-
+### Delayed Features
+#### Mobile-friendly client (Portrait Interface)
+While resizing the text and image isn't hard, but is where to place elements: 
+For example the navigation rail, available to put on the left side in landscape mode, but in mobile must place on the bottom of screen
 
  
