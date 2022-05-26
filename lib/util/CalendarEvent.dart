@@ -118,8 +118,8 @@ class CalendarEventDataHelper {
         /// Query parameter need be pass in separately, otherwise the question mark
         Uri.https(
           MyURL.mainAPIEndpoint, 
-          'v1/universal/user/calendar/event',
-          {"event_id": event_id},
+          'v2/calendar/event/get',
+          {"event_id_list": event_id},
         ),
         /// Without "Accept" and "Content-Type" will have CORS error on Chrome
         headers: {
@@ -207,8 +207,7 @@ class CalendarEventList {
       var response = await httpClient.get(
         Uri.https(
           MyURL.mainAPIEndpoint, 
-          'v1/private/user/calendar/event/index',
-          {"person_id": "1234567890"},
+          'v2/calendar/event/index',
         ),
         headers: {
           "Accept": "application/json",
