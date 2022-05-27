@@ -176,6 +176,87 @@ class CalendarEventDataHelper {
     }
     return retList;
   }
+
+  static Future<List<CalendarEventData>> newMultipleEvent({required http.Client httpClient, String pa_token="aaaaaaaa", required List<String> event_id_list}) async {
+    try {
+      debugPrint("Fetching event(s) "+event_id_list.toString());
+      var response = await httpClient.get(
+        /// Query parameter need be pass in separately, otherwise the question mark
+        Uri.https(
+          MyURL.mainAPIEndpoint,
+          'v2/calendar/event/get',
+          {"event_id_list": event_id_list},
+        ),
+        /// Without "Accept" and "Content-Type" will have CORS error on Chrome
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "pa-token": pa_token,
+        },
+      );
+      if (response.statusCode != 200) {
+        throw Exception("status code: " + response.statusCode.toString());
+      }
+      // var decodedResponse = jsonDecode(utf8.decode(response.bodyBytes)) as Map;
+      // Iterable decodedResponse = json.decode(utf8.decode(response.bodyBytes));
+      // debugPrint(decodedResponse.toString());
+      debugPrint(utf8.decode(response.bodyBytes));
+      /// WARNING: when did not actually get the event data from backend will error when getting value of these key
+      /// Also should check the schema version
+      // List<CalendarEventData> returnList = [];
+      // for (var eachResponse in decodedResponse){
+      //   if (eachResponse["structure_version"] == 4){
+      //     returnList.add(CalendarEventData(
+      //       eachResponse["structure_version"],
+      //       eachResponse["event_id"],
+      //       eachResponse["display_name"],
+      //       eachResponse["description"],
+      //       TimeObject(
+      //         eachResponse["start_time"]["text"],
+      //         eachResponse["start_time"]["timestamp_int"],
+      //         eachResponse["start_time"]["timezone_name"],
+      //         eachResponse["start_time"]["timezone_offset"],
+      //       ),
+      //       TimeObject(
+      //         eachResponse["end_time"]["text"],
+      //         eachResponse["end_time"]["timestamp_int"],
+      //         eachResponse["end_time"]["timezone_name"],
+      //         eachResponse["end_time"]["timezone_offset"],
+      //       ),
+      //     ));
+      //   }
+      //   else{
+      //     throw Exception("");
+      //   }
+      // }
+      Iterable<CalendarEventData> returnList = (json.decode(response.body) as List).map((eachResponse) {
+        if (eachResponse["structure_version"] == 4) {
+          return CalendarEventData(
+            eachResponse["structure_version"],
+            eachResponse["event_id"],
+            eachResponse["display_name"],
+            eachResponse["description"],
+            TimeObject(
+              eachResponse["start_time"]["text"],
+              eachResponse["start_time"]["timestamp_int"],
+              eachResponse["start_time"]["timezone_name"],
+              eachResponse["start_time"]["timezone_offset"],
+            ),
+            TimeObject(
+              eachResponse["end_time"]["text"],
+              eachResponse["end_time"]["timestamp_int"],
+              eachResponse["end_time"]["timezone_name"],
+              eachResponse["end_time"]["timezone_offset"],
+            ),
+          );
+        }
+        else{
+          throw Exception("");
+        }
+      });
+      return List.from(returnList);
+    } finally {}
+  }
 }
 
 class TimeObject {

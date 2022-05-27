@@ -46,7 +46,7 @@ class _MyMyEventListPageState extends State<MyEventListPage> {
                   for (int currentElement in globalVar.calendarEventIndex.take(10)){
                     CEIndex.add(currentElement.toString());
                   }
-                  CalendarEventDataHelper.multipleEvent(httpClient: globalVar.apiClient, event_id_list: CEIndex).then((ret) {
+                  CalendarEventDataHelper.newMultipleEvent(httpClient: globalVar.apiClient, event_id_list: CEIndex).then((ret) {
                     globalVar.someCalendarEventData = ret;
                     debugPrint("Finished Fetching events");
                     for (CalendarEventData currentCED in globalVar.someCalendarEventData){
